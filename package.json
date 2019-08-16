@@ -57,6 +57,7 @@
     "react-force-graph-2d": "^1.9.1",
     "react-force-graph-3d": "^1.9.1",
     "react-i18next": "^10.11.2",
+    "react-parallax": "^2.2.0",
     "react-resize-detector": "^4.2.0",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^5.0.1",
