@@ -84,7 +84,6 @@ const useStyle = makeStyles(() => ({
     position: 'relative',
     zIndex: 5,
     marginTop: '-12%',
-    padding: 34,
   },
   aboutMeBackground: {
     background: `${data.darkColor}`,
@@ -181,14 +180,19 @@ export const Heading = ({ children = null, className = [], ...props }) => {
   return <div className={classnames(className, classes.heading)} {...props}>{children}</div>;
 };
 
-export const HeadingTitle = ({ children = null, className = [], ...props }) => {
+export const HeadingTitle = ({ children = null, className = [], style = {}, ...props }) => {
   const classes = useStyle();
   const theme = useTheme<Theme>();
   const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
   
-  return <Paper square elevation={12} className={classnames(className, classes.headingTitle)} {...props}>
-    <Typography variant={isSmUp ? 'h4' : 'h5'}>{children}</Typography>
-  </Paper>;
+  return <div className={classnames(className, classes.headingTitle)}>
+    <Paper square elevation={12} style={{
+      padding: 34,
+      ...style,
+    }} {...props}>
+      <Typography variant={isSmUp ? 'h4' : 'h5'}>{children}</Typography>
+    </Paper>
+  </div>;
 };
 
 export const Publications = ({}) => {
@@ -268,7 +272,6 @@ export const AboutMe = ({}) => {
     strangth={300}
     renderLayer={wrapParallaxRender(perc => {
       const p = perc > 0.2 ? (perc - 0.2) : 0;
-      console.log({ p1: p });
       return <div
         className={classes.aboutMeBackground}
         style={{
