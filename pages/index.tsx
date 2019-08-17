@@ -159,7 +159,7 @@ export const HeaderContent = ({ className = [], ...props }) => {
       <br/>
       <img src={data.vshsdt_name}/>
     </div>
-    {data.title.map(title => <Typography variant={isSmUp ? 'h2' : 'h3'} style={{ color: 'white' }}>{title}</Typography>)}
+    {data.title.map((title, i) => <Typography key={i} variant={isSmUp ? 'h2' : 'h3'} style={{ color: 'white' }}>{title}</Typography>)}
     <Typography variant="h4" style={{ color: 'white', marginTop: 64 }}>{data.description}</Typography>
     <Typography variant="h4" style={{ color: 'white' }}>{data.definition}</Typography>
 
@@ -342,12 +342,12 @@ export const MyComment = ({}) => {
                 {data.myComment.body}
               </Typography>
               <Grid container justify="center" alignItems="center">
-                <Grid xs={8}>
+                <Grid item xs={8}>
                   <Typography variant="body2">
                     {data.myComment.me}
                   </Typography>
                 </Grid>
-                <Grid xs={4}>
+                <Grid item xs={4}>
                   <img src={data.myComment.sign} style={{ width: '100%', marginTop: 32 }}/>
                 </Grid>
               </Grid>
@@ -364,12 +364,12 @@ export const MyComment = ({}) => {
           {data.myComment.body}
         </Typography>
         <Grid container justify="center" alignItems="center" style={{ marginTop: 16 }}>
-          <Grid xs={8}>
+          <Grid item xs={8}>
             <Typography variant="body2">
               {data.myComment.me}
             </Typography>
           </Grid>
-          <Grid xs={4}>
+          <Grid item xs={4}>
             <img src={data.myComment.sign} style={{ width: '100%', marginTop: 32 }}/>
           </Grid>
         </Grid>

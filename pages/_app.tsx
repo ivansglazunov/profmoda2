@@ -93,9 +93,10 @@ export default class MyApp extends App {
   componentDidMount() {
     const jssStyles = document.querySelector('#jss-server-side');
 
-    if (jssStyles) {
-      jssStyles.parentNode.removeChild(jssStyles);
-    }
+    // TODO WTF it not regenerated? disabled for check
+    // if (jssStyles) {
+    //   jssStyles.parentNode.removeChild(jssStyles);
+    // }
   }
   static async getInitialProps({ Component, ctx: { req: { cookies } } }) {
     const token = process.browser ? Cookie.get('token') : cookies ? cookies.token : undefined;
