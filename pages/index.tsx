@@ -30,8 +30,7 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 import '../imports/i18n';
 
 export const wrapParallaxRender = (callback) => (perc) => {
-  console.log({ p: process.browser ? 0 : perc, perc });
-  callback(!process.browser ? 0 : perc);
+  return callback(!process.browser ? 0 : perc);
 };
 
 export function useInterval(callback, delay) {
@@ -269,6 +268,7 @@ export const AboutMe = ({}) => {
     strangth={300}
     renderLayer={wrapParallaxRender(perc => {
       const p = perc > 0.2 ? (perc - 0.2) : 0;
+      console.log({ p1: p });
       return <div
         className={classes.aboutMeBackground}
         style={{
