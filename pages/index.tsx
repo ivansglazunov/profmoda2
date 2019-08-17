@@ -30,7 +30,7 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 import '../imports/i18n';
 
 export const wrapParallaxRender = (callback) => (perc) => {
-  callback(process.window ? 0 : perc);
+  callback(process.browser ? 0 : perc);
 };
 
 export function useInterval(callback, delay) {
