@@ -1,8 +1,0 @@
-@font-face {
-  font-family: 'Futura-Normal';
-  src: url('%PUBLIC_URL%/futura.woff') format('woff');
-}
-
-body *:not(.fa):not(.MuiTypography-root) {
-  font-family: "Helvetica Neue", Helvetica;
-}
