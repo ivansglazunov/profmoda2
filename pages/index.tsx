@@ -9,61 +9,43 @@ export const WhiteSpace = () => {
 export default () => {
   return <>
     <Parallax
-      bgImage={'/static/1.jpg'}
+      bgImage={'/static/6.jpeg'}
       strength={200}
-      renderLayer={percentage => (
-        <div>
-          <div
-            style={{
-              position: "absolute",
-              background: `rgba(255, 125, 0, ${percentage * 1})`,
-              left: "50%",
-              top: "50%",
-              borderRadius: "50%",
-              transform: "translate(-50%,-50%)",
-              width: percentage * 500,
-              height: percentage * 500
-            }}
-          />
-        </div>
-      )}
     >
       <div style={{ height: 500 }}>
       </div>
     </Parallax>
     <Parallax
-      bgImage={'/static/0.jpg'}
-      strength={300}
-    >
-      <div style={{ height: 500 }}>
-      </div>
-    </Parallax>
-    <Parallax
-      bgImage={'/static/0.jpg'}
-      strength={300}
-    >
-      <div style={{ height: 500 }}>
-      </div>
-    </Parallax>
-    <Parallax
-      bgImage={'/static/1.jpg'}
+      bgImage={'/static/1.jpeg'}
       strength={200}
-      renderLayer={percentage => (
-        <div>
-          <div
-            style={{
-              position: "absolute",
-              background: `rgba(255, 125, 0, ${percentage * 1})`,
-              left: "50%",
-              top: "50%",
-              borderRadius: "50%",
-              transform: "translate(-50%,-50%)",
-              width: percentage * 500,
-              height: percentage * 500
-            }}
-          />
-        </div>
-      )}
+    >
+      <div style={{ height: 500 }}>
+      </div>
+    </Parallax>
+    <Parallax
+      bgImage={'/static/5.jpeg'}
+      strength={200}
+    >
+      <div style={{ height: 500 }}>
+      </div>
+    </Parallax>
+    <Parallax
+      bgImage={'/static/2.jpeg'}
+      strength={200}
+    >
+      <div style={{ height: 500 }}>
+      </div>
+    </Parallax>
+    <Parallax
+      bgImage={'/static/4.jpeg'}
+      strength={200}
+    >
+      <div style={{ height: 500 }}>
+      </div>
+    </Parallax>
+    <Parallax
+      bgImage={'/static/3.jpeg'}
+      strength={200}
     >
       <div style={{ height: 500 }}>
       </div>
