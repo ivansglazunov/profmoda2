@@ -29,6 +29,10 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 
 import '../imports/i18n';
 
+export const wrapParallaxRender = (callback) => (perc) => {
+  callback(process.window ? 0 : perc);
+};
+
 export function useInterval(callback, delay) {
   const savedCallback: any = React.useRef();
 
@@ -262,7 +266,7 @@ export const AboutMe = ({}) => {
     
   return  <Parallax
     strangth={300}
-    renderLayer={perc => {
+    renderLayer={wrapParallaxRender(perc => {
       const p = perc > 0.2 ? (perc - 0.2) : 0;
       return <div
         className={classes.aboutMeBackground}
@@ -289,7 +293,7 @@ export const AboutMe = ({}) => {
           </Hidden>
         </Container>
       </div>;
-    }}
+    })}
   >
     <Background>
       <div></div>
@@ -383,7 +387,7 @@ export const ForWho = ({}) => {
     bgImage={require('../images/forWho.jpeg')}
     strangth={400}
     blur={{ min: 0, max: 10 }}
-    renderLayer={perc => {
+    renderLayer={wrapParallaxRender(perc => {
       return <div style={{
         zIndex: 1,
         position: 'absolute',
@@ -393,7 +397,7 @@ export const ForWho = ({}) => {
         top: 0,
         background: `rgba(255, 255, 255, ${(perc - 0.15) * 1.2})`,
       }}></div>;
-    }}
+    })}
   >
     <Container style={{ position: 'relative', zIndex: 5 }}>
       <Grid container justify="space-around" alignItems="center" style={{ paddingTop: 128, paddingBottom: 64 }}>
@@ -451,8 +455,8 @@ export const Rules = ({}) => {
     <Hidden xsDown>
       <Grid container alignItems="center" justify="center">
         {data.rules.steps.map((step, i) => (
-          <Grid item sm={5} md={4} style={{ background: `rgba(255, 255, 255, 0.05)`, margin: 32, padding: 32 }}>
-            <Typography key={i} style={{ fontSize: '1.3em', borderBottom: '3px solid white', color: '#fff', paddingBottom: 16 }} variant="body2">{step}</Typography>
+          <Grid key={i} item sm={5} md={4} style={{ background: `rgba(255, 255, 255, 0.05)`, margin: 32, padding: 32 }}>
+            <Typography style={{ fontSize: '1.3em', borderBottom: '3px solid white', color: '#fff', paddingBottom: 16 }} variant="body2">{step}</Typography>
           </Grid>
         ))}
       </Grid>
@@ -642,7 +646,7 @@ export default () => {
     <Parallax
       bgImage={require('../images/publications.jpeg')}
       strangth={300}
-      renderLayer={perc => {
+      renderLayer={wrapParallaxRender(perc => {
         let p = perc - 0.7;
         if (p <= 0) p = 0;
         else p *= 3.33;
@@ -658,7 +662,7 @@ export default () => {
             width: `${p * 250}%`,
           }}
         ></div>;
-    }}
+    })}
     >
       <Header>
         <HeaderContent/>
