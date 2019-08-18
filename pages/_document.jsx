@@ -40,6 +40,7 @@ export default class MyDocument extends Document {
     return (
       <html lang='en'>
         <head>
+          <script src="//unpkg.com/@textback/notification-widget@latest/build/index.js"></script>
           {head}
           <script
             id='ssr-apollo-state'
