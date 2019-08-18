@@ -536,7 +536,6 @@ export default () => {
     onClick={event => {
       setCalendarOpen(event.currentTarget);
     }}
-    style={{ backgroundColor: '#ffffffb8' }}
   >
     <CalendarButtonContent />
   </Button>;
