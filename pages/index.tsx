@@ -150,7 +150,7 @@ export const Header = ({ children = null, className = [], ...props }) => {
   </Container>;
 };
 
-export const HeaderContent = ({ className = [], ...props }) => {
+export const HeaderContent = ({ dateButton, className = [], ...props }) => {
   const classes = useStyle();
   const theme = useTheme<Theme>();
   const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
@@ -172,6 +172,10 @@ export const HeaderContent = ({ className = [], ...props }) => {
     <Typography variant="body2" style={{ color: 'white' }}>
       {data.vshsdt.fullOf}
     </Typography>
+
+    <Hidden mdUp>
+      <div style={{ marginTop: 16 }}>{dateButton}</div>
+    </Hidden>
   </div>;
 };
 
@@ -197,7 +201,7 @@ export const HeadingTitle = ({ children = null, className = [], style = {}, ...p
 
 export const Publications = ({}) => {
   return <Parallax
-    bgImage={require('../images/publications.jpeg')}
+    bgImage={require('../images/publications.jpeg?resize&size=1000')}
     strangth={300}
     blur={{ min: -2, max: 5 }}
   >
@@ -217,7 +221,7 @@ export const Publications = ({}) => {
 
 export const Partners = ({}) => {
   return <Parallax
-    bgImage={require('../images/partners.jpeg')}
+    bgImage={require('../images/partners.jpeg?resize&size=1000?resize&size=1000')}
     strangth={300}
     blur={{ min: -2, max: 5 }}
   >
@@ -388,7 +392,7 @@ export const MyComment = ({}) => {
 
 export const ForWho = ({}) => {
   return <Parallax
-    bgImage={require('../images/forWho.jpeg')}
+    bgImage={require('../images/forWho.jpeg?resize&size=1000')}
     strangth={400}
     blur={{ min: 0, max: 10 }}
     renderLayer={wrapParallaxRender(perc => {
@@ -407,9 +411,7 @@ export const ForWho = ({}) => {
       <Grid container justify="space-around" alignItems="center" style={{ paddingTop: 128, paddingBottom: 64 }}>
         {data.forWho.variants.map((variant, i) => (
           <Grid key={i} item xs={12} sm={10} style={{ paddingBottom: 16 }}>
-            <Fade left delay={i * 200}>
-              {variant}
-            </Fade>
+            {variant}
           </Grid>
         ))}
       </Grid>
@@ -648,12 +650,12 @@ export default () => {
       </Grid>
     </div>
     <Parallax
-      bgImage={require('../images/publications.jpeg')}
+      bgImage={require('../images/bg-white.png?resize&size=10')}
       strangth={300}
       renderLayer={wrapParallaxRender(perc => {
-        let p = perc - 0.7;
+        let p = perc - 0.8;
         if (p <= 0) p = 0;
-        else p *= 3.33;
+        else p *= 5;
 
         return <div
           style={{
@@ -669,7 +671,7 @@ export default () => {
     })}
     >
       <Header>
-        <HeaderContent/>
+        <HeaderContent dateButton={dateButton}/>
       </Header>
     </Parallax>
     <Heading>

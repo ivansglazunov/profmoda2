@@ -3,6 +3,7 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/styles';
 import { ServerStyleSheet } from 'styled-components';
 import flush from 'styled-jsx/server';
+import { Analitics } from '../imports/analitics';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -50,6 +51,7 @@ export default class MyDocument extends Document {
           />
         </head>
         <body>
+          <Analitics/>
           <Main />
           <NextScript />
           {styles}
