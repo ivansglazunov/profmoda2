@@ -1,3 +1,3 @@
 export default {
-  apolloEnabled: true,
+  apolloEnabled: false,
 };
