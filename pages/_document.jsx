@@ -50,6 +50,7 @@ export default class MyDocument extends Document {
               )}`,
             }}
           />
+          <link rel="stylesheet" type="text/css" href="/static/react-infinite-calendar-styles.css"/>
           <style
             dangerouslySetInnerHTML={{
               __html: `

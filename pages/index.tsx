@@ -21,7 +21,6 @@ import InfiniteCalendar, {
   withRange,
 } from 'react-infinite-calendar';
 import { withDefaultProps } from 'react-infinite-calendar/lib/Calendar';
-import 'react-infinite-calendar/styles.css';
 
 import School from '@material-ui/icons/School';
 import Train from '@material-ui/icons/Train';
@@ -29,8 +28,6 @@ import Phone from '@material-ui/icons/Phone';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 
 import '../imports/i18n';
-
-import '../style.css';
 
 export const wrapParallaxRender = (callback) => (perc) => {
   return callback(!process.browser ? 0 : perc);
@@ -595,6 +592,7 @@ export default () => {
   </Popover>;
 
   return <>
+    {popoverCalendar}
     <div style={{
       position: 'fixed',
       zIndex: 10,
