@@ -532,6 +532,7 @@ export default () => {
 
   const dateButton = <Button
     variant="outlined"
+    style={{ padding: 6 }}
     onClick={event => {
       setCalendarOpen(event.currentTarget);
     }}
