@@ -159,9 +159,9 @@ export const HeaderContent = ({ dateButton, className = [], ...props }) => {
 
   return <div className={classnames(className, classes.headerContent)} {...props}>
     <div style={{ float: 'right', width: isMdUp ? 'initial' : '100%', textAlign: 'center', paddingBottom: 64 }}>
-      <img src={data.vshsdt_logo}/>
+      <img src={data.vshsdt_logo} style={{ width: 200 }}/>
       <br/>
-      <img src={data.vshsdt_name}/>
+      <img src={data.vshsdt_name} style={{ width: 200 }}/>
     </div>
     {data.title.map((title, i) => <Typography key={i} variant={isSmUp ? 'h2' : 'h3'} style={{ color: 'white' }}>{title}</Typography>)}
     <Typography variant="h4" style={{ color: 'white', marginTop: 64 }}>{data.description}</Typography>
@@ -174,7 +174,7 @@ export const HeaderContent = ({ dateButton, className = [], ...props }) => {
       {data.vshsdt.fullOf}
     </Typography>
 
-    <Hidden mdUp>
+    <Hidden smUp>
       <div style={{ marginTop: 16 }}>{dateButton}</div>
     </Hidden>
   </div>;
@@ -651,7 +651,7 @@ export default () => {
       </Grid>
     </div>
     <Parallax
-      bgImage={require('../images/bg-white.png?resize&size=10')}
+      bgImage={require('../images/bg-white.png')}
       strangth={300}
       renderLayer={wrapParallaxRender(perc => {
         let p = perc - 0.8;

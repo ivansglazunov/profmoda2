@@ -33,13 +33,14 @@ for (let key in theme.typography) {
   if (typeof(theme.typography[key]) === 'object') {
     if (_.includes(['h1','h2','h3'], key)) {
       theme.typography[key].fontFamily = theme.typography.fontFamily;
+      // theme.typography[key].fontFamily = '"Futura-Normal", Helvetica, sans-serif';
       theme.typography[key].fontWeight = 700;
       theme.typography[key].textTransform = 'uppercase';
     } else if (_.includes(['h4','h5','h6','subtitle1','subtitle2'], key)) {
-      theme.typography[key].fontFamily = theme.typography.fontFamily;
+      // theme.typography[key].fontFamily = '"Futura-Normal", Helvetica, sans-serif';
+      theme.typography[key].fontFamily = '"Helvetica Neue", Helvetica, sans-serif';
       theme.typography[key].fontWeight = 700;
     } else {
-      theme.typography[key].fontFamily = '"Helvetica Neue", Helvetica, sans-serif';
     }
   }
 }
@@ -80,10 +81,10 @@ function CreateComponent(Component, pageProps, apolloClient) {
             width: '100%',
             height: '100%',
           }}>
-          <ApolloProvider client={apolloClient}>
+          {/* <ApolloProvider client={apolloClient}> */}
             <CssBaseline />
             <Component {...pageProps} />
-          </ApolloProvider>
+          {/* </ApolloProvider> */}
         </div>
       </ThemeProvider>
     </Container>

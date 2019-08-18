@@ -8,5 +8,7 @@ module.exports = withPlugins([
   [withCSS, {
     cssModules: true,
   }],
-  [optimizedImages],
+  [optimizedImages, {
+    optimizeImages: false,
+  }],
 ]);
