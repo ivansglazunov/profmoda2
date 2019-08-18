@@ -700,7 +700,6 @@ export default () => {
     <iframe src="https://billing.styleschool.ru/event/o9FNECyGNLKor3vYp/simple?colorPrimary=yellow" style={{
       border: 0,
       width: '100%',
-      height: `70vh`,
       height: 500,
     }}></iframe>
     <Heading/>
@@ -741,6 +740,7 @@ export default () => {
       <Grid item xs={12} md={8}>
         <Map/>
       </Grid>
+      <Grid item xs={12} style={{ height: 50 }}/>
     </Grid>
   </>;
 };

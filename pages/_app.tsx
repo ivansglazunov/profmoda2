@@ -12,6 +12,7 @@ import { Theme } from '@material-ui/core';
 
 import { initApollo } from '../imports/apollo';
 import { getDataFromTree } from '@apollo/react-ssr';
+import config from '../imports/config';
 
 const theme: Theme = createMuiTheme();
 
@@ -115,16 +116,18 @@ export default class MyApp extends App {
   }
   constructor(props) {
     super(props);
-    if (typeof window === 'object') {
-      // @ts-ignore
-      this.apolloClient = initApollo(window.__APOLLO_STATE__, props.token);
-    } else {
-      // @ts-ignore
-      global.__APOLLO_STATE__ = props.apolloState;
-      // @ts-ignore
-      props.apolloState;
-      // @ts-ignore
-      this.apolloClient = initApollo(props.apolloState, props.token);
+    if (config.apolloEnabled) {
+      if (typeof window === 'object') {
+        // @ts-ignore
+        this.apolloClient = initApollo(window.__APOLLO_STATE__, props.token);
+      } else {
+        // @ts-ignore
+        global.__APOLLO_STATE__ = props.apolloState;
+        // @ts-ignore
+        props.apolloState;
+        // @ts-ignore
+        this.apolloClient = initApollo(props.apolloState, props.token);
+      }
     }
   }
   render() {
