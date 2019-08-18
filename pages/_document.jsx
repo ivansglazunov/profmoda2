@@ -50,12 +50,33 @@ export default class MyDocument extends Document {
               )}`,
             }}
           />
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+                tb-notification-button {
+                  width: 30%;
+                  float: left;
+                  display: block;
+                  padding: 1.5%;
+                  text-align: center;
+                }
+                
+                tb-notification-button__text {
+                  display: none;
+                }
+                
+                .Cal__Day__root {
+                  pointer-events: none;
+                }
+              `,
+            }}
+          />
         </head>
         <body>
+          {styles}
           <Analitics/>
           <Main />
           <NextScript />
-          {styles}
         </body>
       </html>
     );

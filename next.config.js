@@ -5,10 +5,9 @@ const withCSS = require('@zeit/next-css');
 
 module.exports = withPlugins([
   [withTypescript],
-  [withCSS, {
-    cssModules: true,
-  }],
+  [withCSS],
   [optimizedImages, {
-    optimizeImages: false,
+    optimizeImages: true,
+    optimizeImagesInDev: true,
   }],
 ]);

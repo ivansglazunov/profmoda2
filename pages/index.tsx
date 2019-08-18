@@ -30,6 +30,8 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 
 import '../imports/i18n';
 
+import '../style.css';
+
 export const wrapParallaxRender = (callback) => (perc) => {
   return callback(!process.browser ? 0 : perc);
 };
@@ -63,7 +65,7 @@ const useStyle = makeStyles(() => ({
   header: {
     width: '100%',
     minHeight: '50vh',
-    // backgroundImage: `url(${require('../images/bg-white.png?resize&size=200')})`,
+    // backgroundImage: `url(${require('../images/bg-white.png')})`,
     // backgroundRepeat: 'repeat',
     // backgroundAttachment: 'fixed',
     backgroundColor: data.darkColor,
@@ -202,7 +204,7 @@ export const HeadingTitle = ({ children = null, className = [], style = {}, ...p
 
 export const Publications = ({}) => {
   return <Parallax
-    bgImage={require('../images/publications.jpeg?resize&size=1000')}
+    bgImage={require('../images/publications.jpeg')}
     strangth={300}
     blur={{ min: -2, max: 5 }}
   >
@@ -222,7 +224,7 @@ export const Publications = ({}) => {
 
 export const Partners = ({}) => {
   return <Parallax
-    bgImage={require('../images/partners.jpeg?resize&size=1000?resize&size=1000')}
+    bgImage={require('../images/partners.jpeg')}
     strangth={300}
     blur={{ min: -2, max: 5 }}
   >
@@ -393,7 +395,7 @@ export const MyComment = ({}) => {
 
 export const ForWho = ({}) => {
   return <Parallax
-    bgImage={require('../images/forWho.jpeg?resize&size=1000')}
+    bgImage={require('../images/forWho.jpeg')}
     strangth={400}
     blur={{ min: 0, max: 10 }}
     renderLayer={wrapParallaxRender(perc => {
@@ -657,6 +659,8 @@ export default () => {
         if (p <= 0) p = 0;
         else p *= 5;
 
+        const w = p * 250;
+
         return <div
           style={{
             position: 'absolute',
@@ -665,7 +669,7 @@ export default () => {
             left: `0%`,
             top: '0%',
             height: '100%',
-            width: `${p * 250}%`,
+            width: `${w < 100 ? w : 100}%`,
           }}
         ></div>;
     })}
