@@ -10,6 +10,7 @@ import Fade from 'react-reveal/Fade';
 import ReactResizeDetector from 'react-resize-detector';
 import Tilt from 'react-tilt';
 import {isMobile} from 'react-device-detect';
+import TextBackComponent from "../imports/textback";
 
 import data from '../imports/data';
 import { Parallax, Background } from 'react-parallax';
@@ -691,12 +692,16 @@ export default () => {
     </Heading>
     <Partners/>
     <Rules/>
+    <Grid container justify="center" alignItems="center">
+      <Grid item xs={10} sm={6} md={4} lg={3} style={{ padding: 38 }}>
+        <TextBackComponent />
+      </Grid>
+    </Grid>
     <iframe src="https://billing.styleschool.ru/event/o9FNECyGNLKor3vYp/simple?colorPrimary=yellow" style={{
       border: 0,
       width: '100%',
-      minHeight: 400,
       height: `70vh`,
-      maxHeight: 450,
+      height: 500,
     }}></iframe>
     <Heading/>
     <Grid container style={{ backgroundColor: data.darkColor }} justify="center" alignItems="center">
