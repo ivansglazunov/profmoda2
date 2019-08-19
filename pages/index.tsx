@@ -632,7 +632,10 @@ export default () => {
               position: 'absolute',
               bottom: 7,
               left: 'calc(50% - 20px)',
-              transition: 'all 0.5s ease'
+              transition: 'all 0.5s ease',
+              borderRadius: '50%',
+              color: '#fff',
+              backgroundColor: '#f50057',
             }}
           >
             <Phone />
