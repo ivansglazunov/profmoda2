@@ -12,4 +12,6 @@ module.exports = withPlugins([
     optimizeImages: true,
     optimizeImagesInDev: true,
   }],
-]);
+], {
+  hmr: false,
+});

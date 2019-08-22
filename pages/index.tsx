@@ -23,11 +23,13 @@ import InfiniteCalendar, {
 import { withDefaultProps } from 'react-infinite-calendar/lib/Calendar';
 
 import School from '@material-ui/icons/School';
+import Done from '@material-ui/icons/Done';
 import Train from '@material-ui/icons/Train';
 import Phone from '@material-ui/icons/Phone';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 
 import '../imports/i18n';
+import { List, ListItem } from '@material-ui/core';
 
 export const wrapParallaxRender = (callback) => (perc) => {
   return callback(!process.browser ? 0 : perc);
@@ -86,13 +88,14 @@ const useStyle = makeStyles(() => ({
     marginTop: '-12%',
   },
   aboutMeBackground: {
-    background: `${data.darkColor}`,
+    // background: `${data.darkColor}`,
+    background: '#8d9e5f',
     width: `100%`,
     overflow: 'hidden',
   },
   aboutMeContainer: {
-    paddingTop: 32,
-    paddingBottom: 32,
+    // paddingTop: 32,
+    // paddingBottom: 32,
   },
   aboutMePhotoItem: {
     textAlign: 'center',
@@ -158,9 +161,9 @@ export const HeaderContent = ({ dateButton, className = [], ...props }) => {
 
   return <div className={classnames(className, classes.headerContent)} {...props}>
     <div style={{ float: 'right', width: isMdUp ? 'initial' : '100%', textAlign: 'center', paddingBottom: 64 }}>
-      <img src={data.vshsdt_logo} style={{ width: 200 }}/>
+      <img src={data.vshsdt_logo} style={{ width: isMdUp ? 300 : 200 }}/>
       <br/>
-      <img src={data.vshsdt_name} style={{ width: 200 }}/>
+      <img src={data.vshsdt_name} style={{ width: isMdUp ? 300 : 200 }}/>
     </div>
     {data.title.map((title, i) => <Typography key={i} variant={isSmUp ? 'h2' : 'h3'} style={{ color: 'white' }}>{title}</Typography>)}
     <Typography variant="h4" style={{ color: 'white', marginTop: 64 }}>{data.description}</Typography>
@@ -173,7 +176,7 @@ export const HeaderContent = ({ dateButton, className = [], ...props }) => {
       {data.vshsdt.fullOf}
     </Typography>
 
-    <Hidden smUp>
+    <Hidden implementations="css" smUp>
       <div style={{ marginTop: 16 }}>{dateButton}</div>
     </Hidden>
   </div>;
@@ -201,10 +204,12 @@ export const HeadingTitle = ({ children = null, className = [], style = {}, ...p
 
 export const Publications = ({}) => {
   return <Parallax
-    bgImage={require('../images/publications.jpeg')}
+    // bgImage={require('../images/publications.jpeg')}
     strangth={300}
-    blur={{ min: -2, max: 5 }}
   >
+    <Background>
+      <div></div>
+    </Background>
     <Container>
       <Grid container justify="space-around" alignItems="center" style={{ marginTop: 64 }}>
         {data.publications.logos.map((logo, i) => (
@@ -221,10 +226,13 @@ export const Publications = ({}) => {
 
 export const Partners = ({}) => {
   return <Parallax
-    bgImage={require('../images/partners.jpeg')}
+    // bgImage={require('../images/partners.jpeg')}
     strangth={300}
     blur={{ min: -2, max: 5 }}
   >
+    <Background>
+      <div></div>
+    </Background>
     <Container>
       <Grid container justify="space-around" alignItems="center" style={{ marginTop: 128, marginBottom: 64 }}>
         {data.partners.logos.map((logo, i) => (
@@ -247,16 +255,19 @@ export const AboutMe = ({}) => {
 
     const photoItem = <Grid item xs={12} md={4} lg={4} style={{
       ...(isMdUp ? {
-        paddingRight: 32,
-        paddingLeft: 32,
-      } : {})
+        // paddingRight: 32,
+        // paddingLeft: 32,
+      } : {
+        paddingTop: 32,
+        paddingBottom: 64,
+      })
     }} className={classes.aboutMePhotoItem}>
       <img src={data.aboutMe.photo} style={{
         maxHeight: isMdUp ? 'calc(60vh - 128px)' : 'initial',
         maxWidth: '100%',
-        boxShadow: `0 0 0 10px ${data.darkColor}, 0 0 0 17px #fff`,
-        marginTop: 60,
-        marginBottom: 60,
+        // boxShadow: `0 0 0 10px ${data.darkColor}, 0 0 0 17px #fff`,
+        // marginTop: 60,
+        // marginBottom: 60,
       }}/>
     </Grid>;
 
@@ -280,20 +291,20 @@ export const AboutMe = ({}) => {
         className={classes.aboutMeBackground}
         style={{
           height: isMdUp ? `${p * 250}vh` : 'initial',
-          maxHeight: size.height,
+          maxHeight: size.height - 20,
         }}
       >
         <Container>
           <ReactResizeDetector handleWidth handleHeight onResize={(width, height) => {
             setSize({ width, height });
           }}/>
-          <Hidden smDown>
+          <Hidden implementations="css" smDown>
             <Grid container alignItems="center" justify="center" classes={{ container: classes.aboutMeContainer }}>
               {photoItem}
               {aboutItem}
             </Grid>
           </Hidden>
-          <Hidden mdUp>
+          <Hidden implementations="css" mdUp>
             <Grid container alignItems="center" justify="center" classes={{ container: classes.aboutMeContainer }}>
               {aboutItem}
               {photoItem}
@@ -345,7 +356,7 @@ export const Banner = ({ children, ...props }) => {
 export const MyComment = ({}) => {
   const classes = useStyle();
   return <>
-    <Hidden xsDown>
+    <Hidden implementations="css" xsDown>
       <div className={classes.myComment}>
         <Grid container style={{ height: '100%', width: '100%' }} alignItems="center" justify="center">
           <Grid item xs={12} sm={10} md={6} lg={6}>
@@ -368,7 +379,7 @@ export const MyComment = ({}) => {
         </Grid>
       </div>
     </Hidden>
-    <Hidden smUp>
+    <Hidden implementations="css" smUp>
       <div className={classes.myComment} style={{ height: 400 }}>
       </div>
       <Paper square style={{ padding: 32, paddingBottom: 84 }}>
@@ -453,12 +464,16 @@ export const Rules = ({}) => {
   const theme = useTheme<Theme>();
 
   const stepsItem = <Grid item xs={12} style={{ paddingTop: 32 }}>
-    <Hidden smUp>
+    <Hidden implementations="css" smUp>
+      <List>
       {data.rules.steps.map((step, i) => (
-        <Typography key={i} style={{ fontSize: '1.3em', borderBottom: data.rules.steps.length - 1 === i ? '' : '3px solid white', color: '#fff', paddingTop: 16, paddingBottom: 16 }} variant="body2">{step}</Typography>
+        <ListItem>
+          <Done fontSize="large" style={{ color: 'white', marginRight: 16 }}/><Typography key={i} style={{ fontSize: '1.3em', borderBottom: data.rules.steps.length - 1 === i ? '' : '3px solid white', color: '#fff', paddingTop: 16, paddingBottom: 16 }} variant="body2">{step}</Typography>
+        </ListItem>
       ))}
+      </List>
     </Hidden>
-    <Hidden xsDown>
+    <Hidden implementations="css" xsDown>
       <Grid container alignItems="center" justify="center">
         {data.rules.steps.map((step, i) => (
           <Grid key={i} item sm={5} md={4} style={{ background: `rgba(255, 255, 255, 0.05)`, margin: 32, padding: 32 }}>
@@ -610,7 +625,7 @@ export default () => {
         transition: 'padding 1s ease',
         textAlign: 'center',
       }}>
-        <Hidden xsDown>
+        <Hidden implementations="css" xsDown>
           <Grid item xs>
             {dateButton}
           </Grid>
@@ -623,7 +638,7 @@ export default () => {
             +7 985 427-12-56
           </Grid>
         </Hidden>
-        <Hidden smUp>
+        <Hidden implementations="css" smUp>
           <Fab
             color="secondary"
             href="tel:+7 985 427-12-56"
@@ -684,7 +699,6 @@ export default () => {
       <HeadingTitle>{data.publications.title}</HeadingTitle>
     </Heading>
     <Publications/>
-    <Heading/>
     <AboutMe/>
     <MyComment/>
     <Heading>
