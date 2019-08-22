@@ -370,11 +370,17 @@ export const MyComment = ({}) => {
         <Grid container style={{ height: '100%', width: '100%' }} alignItems="center" justify="center">
           <Grid item xs={12} sm={10} md={6} lg={6}>
             <Banner>
-              <FormatQuote/>
               <Typography variant="body2">
                 {data.myComment.body}
               </Typography>
-              <FormatQuote/>
+              <div style={{
+                textAlign: 'center', boxShadow: 'inset 0 18px 0 0 white, inset 0 20px 0 0 black',
+                position: 'relative', top: 20,
+              }}>
+                <div style={{ display: 'inline-block', borderRadius: '50%', background: 'white', padding: '0 16px' }}>
+                  <FormatQuote style={{ fontSize: 40 }}/>
+                </div>
+              </div>
               <Grid container justify="center" alignItems="center">
                 <Grid item xs={8}>
                   <Typography variant="body2">
