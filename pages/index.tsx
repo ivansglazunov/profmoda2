@@ -14,6 +14,7 @@ import TextBackComponent from "../imports/textback";
 
 import data from '../imports/data';
 import { Parallax, Background } from 'react-parallax';
+import Slider from "react-slick";
 import { useTheme } from '@material-ui/styles';
 
 import InfiniteCalendar, {
@@ -25,6 +26,7 @@ import { withDefaultProps } from 'react-infinite-calendar/lib/Calendar';
 import School from '@material-ui/icons/School';
 import Done from '@material-ui/icons/Done';
 import Train from '@material-ui/icons/Train';
+import FormatQuote from '@material-ui/icons/FormatQuote';
 import Phone from '@material-ui/icons/Phone';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 
@@ -88,8 +90,7 @@ const useStyle = makeStyles(() => ({
     marginTop: '-12%',
   },
   aboutMeBackground: {
-    // background: `${data.darkColor}`,
-    background: '#8d9e5f',
+    background: `${data.darkColor}`,
     width: `100%`,
     overflow: 'hidden',
   },
@@ -99,8 +100,6 @@ const useStyle = makeStyles(() => ({
   },
   aboutMePhotoItem: {
     textAlign: 'center',
-    paddingRight: 16,
-    paddingLeft: 16,
     boxSizing: 'border-box',
   },
   myComment: {
@@ -110,6 +109,11 @@ const useStyle = makeStyles(() => ({
     backgroundAttachment: 'fixed',
     backgroundSize: 'cover',
     backgroundPosition: 'right center',
+  },
+  slickContainer: {
+    '& .slick-slider': {
+      height: 300,
+    }
   },
   map: {
     position: 'relative',
@@ -177,7 +181,7 @@ export const HeaderContent = ({ dateButton, className = [], ...props }) => {
     </Typography>
 
     <Hidden implementations="css" smUp>
-      <div style={{ marginTop: 16 }}>{dateButton}</div>
+      <div style={{ marginTop: 16, color: 'white' }}>{dateButton}</div>
     </Hidden>
   </div>;
 };
@@ -263,23 +267,26 @@ export const AboutMe = ({}) => {
       })
     }} className={classes.aboutMePhotoItem}>
       <img src={data.aboutMe.photo} style={{
-        maxHeight: isMdUp ? 'calc(60vh - 128px)' : 'initial',
+        // maxHeight: isMdUp ? 'calc(60vh - 128px)' : 'initial',
         maxWidth: '100%',
+        width: '100%',
+        padding: isMdUp ? '0 16px' : 0,
+        marginBottom: isMdUp ? -10 : 0,
         // boxShadow: `0 0 0 10px ${data.darkColor}, 0 0 0 17px #fff`,
         // marginTop: 60,
         // marginBottom: 60,
       }}/>
     </Grid>;
 
-    const aboutItem = <Grid item xs={12} md={8} lg={7}>
-      <Typography style={{ color: '#fff', marginBottom: 16, paddingTop: 12, paddingBottom: 12 }} variant="h3">{data.aboutMe.name}</Typography>
-      <Typography style={{ color: '#fff' }} variant="h4">{data.aboutMe.exp}</Typography>
+    const aboutItem = <Grid item xs={12} md={8} lg={7} style={{ paddingBottom: isMdUp ? 32 : 0 }}>
+      <Typography style={{ marginBottom: 16, paddingTop: 12, paddingBottom: 12 }} variant="h3">{data.aboutMe.name}</Typography>
+      <Typography style={{ }} variant="h4">{data.aboutMe.exp}</Typography>
       {data.aboutMe.exps.map((exp, i) => {
-        return <Typography key={i} style={{ color: '#fff' }} variant="body2">{exp}</Typography>
+        return <Typography key={i} style={{ }} variant="body2">{exp}</Typography>
       })}
-      <Typography style={{ color: '#fff' }} variant="h4">{data.aboutMe.edu}</Typography>
+      <Typography style={{ }} variant="h4">{data.aboutMe.edu}</Typography>
       {data.aboutMe.edus.map((edu, i) => {
-        return <Typography key={i} style={{ color: '#fff' }} variant="body2">{edu}</Typography>
+        return <Typography key={i} style={{ }} variant="body2">{edu}</Typography>
       })}
     </Grid>;
     
@@ -290,8 +297,10 @@ export const AboutMe = ({}) => {
       return <div
         className={classes.aboutMeBackground}
         style={{
-          height: isMdUp ? `${p * 250}vh` : 'initial',
-          maxHeight: size.height - 20,
+          height: isMdUp ? `${p * 200}vh` : 'initial',
+          maxHeight: size.height,
+          backgroundColor: '#bf9b55',
+          backgroundImage: 'linear-gradient(150deg, #ebe299 0%, rgb(150, 116, 78) 100%)',
         }}
       >
         <Container>
@@ -361,9 +370,11 @@ export const MyComment = ({}) => {
         <Grid container style={{ height: '100%', width: '100%' }} alignItems="center" justify="center">
           <Grid item xs={12} sm={10} md={6} lg={6}>
             <Banner>
+              <FormatQuote/>
               <Typography variant="body2">
                 {data.myComment.body}
               </Typography>
+              <FormatQuote/>
               <Grid container justify="center" alignItems="center">
                 <Grid item xs={8}>
                   <Typography variant="body2">
@@ -371,7 +382,7 @@ export const MyComment = ({}) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
-                  <img src={data.myComment.sign} style={{ width: '100%', marginTop: 32 }}/>
+                  <img src={data.myComment.sign} style={{ width: '100%', marginTop: 0 }}/>
                 </Grid>
               </Grid>
             </Banner>
@@ -399,6 +410,33 @@ export const MyComment = ({}) => {
       </Paper>
     </Hidden>
   </>;
+};
+
+export const ForWhoPhotoLine = ({}) => {
+  const classes = useStyle();
+
+  const settings = {
+    className: "slider variable-width",
+    dots: false,
+    arrows: false,
+    infinite: true,
+    centerMode: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    variableWidth: true,
+    autoplay: true,
+    speed: 4000,
+    autoplaySpeed: 4000,
+  };
+
+  return <div className={classes.slickContainer}>
+    <Slider {...settings}>
+      <div style={{ height: 300 }}><img src={require('../images/publications.jpeg?resize&size=400')} style={{ height: 300 }}/></div>
+      <div style={{ height: 300 }}><img src={require('../images/1.jpg?resize&size=400')} style={{ height: 300 }}/></div>
+      <div style={{ height: 300 }}><img src={require('../images/2.jpg?resize&size=400')} style={{ height: 300 }}/></div>
+      <div style={{ height: 300 }}><img src={require('../images/3.jpg?resize&size=400')} style={{ height: 300 }}/></div>
+    </Slider>
+  </div>;
 };
 
 export const ForWho = ({}) => {
@@ -435,22 +473,26 @@ export const Programm = ({}) => {
   const theme = useTheme<Theme>();
 
   const aboutItem = <Grid item xs={12} md={6} lg={5}>
-    <Typography style={{ color: '#fff' }} align="justify" variant="body2">{data.programm.body}</Typography>
+    <Typography style={{ }} align="justify" variant="body2">{data.programm.body}</Typography>
   </Grid>;
 
   const stepsItem = <Grid item xs={12} md={6} lg={5} style={{ paddingTop: 32 }}>
     {data.programm.steps.map((step, i) => (
-      <Typography key={i} style={{ color: '#fff', paddingTop: 6, paddingBottom: 6 }} variant="h5">- {step}</Typography>
+      <Typography key={i} style={{ paddingTop: 6, paddingBottom: 6 }} variant="h5">- {step}</Typography>
     ))}
   </Grid>;
 
   return <div
     className={classes.aboutMeBackground}
+    style={{
+      backgroundColor: '#bf9b55',
+      backgroundImage: 'linear-gradient(150deg, #ebe299 0%, rgb(150, 116, 78) 100%)',
+    }}
   >
     <Container style={{ paddingTop: 64, paddingBottom: 120 }}>
       <Grid container alignItems="center" justify="center" spacing={6}>
         <Grid item xs={12}>
-          <Typography style={{ textAlign: 'center', color: '#fff', marginBottom: 16, paddingTop: 12, paddingBottom: 12 }} variant="h3">{data.programm.title}</Typography>
+          <Typography style={{ textAlign: 'center', marginBottom: 16, paddingTop: 12, paddingBottom: 12 }} variant="h3">{data.programm.title}</Typography>
         </Grid>
         {aboutItem}
         {stepsItem}
@@ -467,8 +509,8 @@ export const Rules = ({}) => {
     <Hidden implementations="css" smUp>
       <List>
       {data.rules.steps.map((step, i) => (
-        <ListItem>
-          <Done fontSize="large" style={{ color: 'white', marginRight: 16 }}/><Typography key={i} style={{ fontSize: '1.3em', borderBottom: data.rules.steps.length - 1 === i ? '' : '3px solid white', color: '#fff', paddingTop: 16, paddingBottom: 16 }} variant="body2">{step}</Typography>
+        <ListItem key={i}>
+          <Done fontSize="large" style={{ color: 'white', marginRight: 16 }}/><Typography style={{ fontSize: '1.3em', borderBottom: data.rules.steps.length - 1 === i ? '' : '3px solid white', color: '#fff', paddingTop: 16, paddingBottom: 16 }} variant="body2">{step}</Typography>
         </ListItem>
       ))}
       </List>
@@ -699,12 +741,19 @@ export default () => {
       <HeadingTitle>{data.publications.title}</HeadingTitle>
     </Heading>
     <Publications/>
+    <Heading/>
     <AboutMe/>
+    <Heading>
+      <HeadingTitle>{data.myComment.title}</HeadingTitle>
+    </Heading>
     <MyComment/>
     <Heading>
       <HeadingTitle>{data.forWho.title}</HeadingTitle>
     </Heading>
+    <ForWhoPhotoLine/>
+    <Heading/>
     <ForWho/>
+    <Heading/>
     <Programm/>
     <Heading>
       <HeadingTitle>{data.partners.title}</HeadingTitle>
