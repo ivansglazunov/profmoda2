@@ -9,7 +9,6 @@ import Flip from 'react-reveal/Flip';
 import Fade from 'react-reveal/Fade';
 import ReactResizeDetector from 'react-resize-detector';
 import Tilt from 'react-tilt';
-import {isMobile} from 'react-device-detect';
 import TextBackComponent from "../imports/textback";
 
 import data from '../imports/data';
@@ -334,11 +333,14 @@ export const AboutMe = ({}) => {
 
 export const Banner = ({ children, ...props }) => {
   const [hovered, setHovered] = React.useState(false);
+  const theme = useTheme<Theme>();
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const isSmDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   return <Tilt
-    disabled={isMobile}
+    disabled={isSmDown}
     {...props}
-    options={isMobile ? { max: 0, scale: 1 } : { max: 15, scale: 1.01, ...props.options }}
+    options={isSmDown ? { max: 0, scale: 1 } : { max: 15, scale: 1.01, ...props.options }}
     style={{ height: '100%', width: '100%', boxSizing: 'border-box', ...props.style }}
   >
     <Paper
@@ -348,8 +350,8 @@ export const Banner = ({ children, ...props }) => {
         boxSizing: 'border-box',
       }}
       elevation={hovered ? 8 : 3}
-      onMouseEnter={() => !isMobile && setHovered(true)}
-      onMouseLeave={() => !isMobile && setHovered(false)}
+      onMouseEnter={() => !isSmDown && setHovered(true)}
+      onMouseLeave={() => !isSmDown && setHovered(false)}
     >
       <div style={{
         boxSizing: 'border-box',
@@ -595,6 +597,7 @@ export default () => {
   const classes = useStyle();
   const theme = useTheme<Theme>();
   const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const isSmDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [selected, setSelected] = React.useState<any>({
     start,
@@ -726,7 +729,7 @@ export default () => {
         </Hidden>
       </Grid>
     </div>
-    {isMobile
+    {isSmDown
       ? <Header>
         <HeaderContent dateButton={dateButton}/>
       </Header>
