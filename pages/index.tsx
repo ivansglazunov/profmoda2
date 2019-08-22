@@ -248,38 +248,38 @@ export const AboutMe = ({}) => {
   const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
   const isSmDown = useMediaQuery(theme.breakpoints.down('sm'));
 
-    const photoItem = <Grid item xs={12} md={4} lg={4} style={{
-      ...(isMdUp ? {
-        // paddingRight: 32,
-        // paddingLeft: 32,
-      } : {
-        paddingTop: 32,
-        paddingBottom: 64,
-      })
-    }} className={classes.aboutMePhotoItem}>
-      <img src={data.aboutMe.photo} style={{
-        // maxHeight: isMdUp ? 'calc(60vh - 128px)' : 'initial',
-        maxWidth: '100%',
-        width: '100%',
-        padding: isMdUp ? '0 16px' : 0,
-        marginBottom: isMdUp ? -10 : 0,
-        // boxShadow: `0 0 0 10px ${data.darkColor}, 0 0 0 17px #fff`,
-        // marginTop: 60,
-        // marginBottom: 60,
-      }}/>
-    </Grid>;
+  const photoItem = <Grid item xs={12} md={4} lg={4} style={{
+    ...(isMdUp ? {
+      // paddingRight: 32,
+      // paddingLeft: 32,
+    } : {
+      paddingTop: 32,
+      paddingBottom: 64,
+    })
+  }} className={classes.aboutMePhotoItem}>
+    <img src={data.aboutMe.photo} style={{
+      // maxHeight: isMdUp ? 'calc(60vh - 128px)' : 'initial',
+      maxWidth: '100%',
+      width: '100%',
+      padding: isMdUp ? '0 16px' : 0,
+      marginBottom: isMdUp ? -10 : 0,
+      // boxShadow: `0 0 0 10px ${data.darkColor}, 0 0 0 17px #fff`,
+      // marginTop: 60,
+      // marginBottom: 60,
+    }}/>
+  </Grid>;
 
-    const aboutItem = <Grid item xs={12} md={8} lg={7} style={{ paddingBottom: isMdUp ? 32 : 0 }}>
-      <Typography style={{ marginBottom: 16, paddingTop: 32, paddingBottom: 12 }} variant="h3">{data.aboutMe.name}</Typography>
-      <Typography style={{ }} variant="h4">{data.aboutMe.exp}</Typography>
-      {data.aboutMe.exps.map((exp, i) => {
-        return <Typography key={i} style={{ }} variant="body2">{exp}</Typography>
-      })}
-      <Typography style={{ }} variant="h4">{data.aboutMe.edu}</Typography>
-      {data.aboutMe.edus.map((edu, i) => {
-        return <Typography key={i} style={{ }} variant="body2">{edu}</Typography>
-      })}
-    </Grid>;
+  const aboutItem = <Grid item xs={12} md={8} lg={7} style={{ paddingBottom: isMdUp ? 32 : 0 }}>
+    <Typography style={{ marginBottom: 16, paddingTop: 32, paddingBottom: 12 }} variant="h3">{data.aboutMe.name}</Typography>
+    <Typography style={{ }} variant="h4">{data.aboutMe.exp}</Typography>
+    {data.aboutMe.exps.map((exp, i) => {
+      return <Typography key={i} style={{ }} variant="body2">{exp}</Typography>
+    })}
+    <Typography style={{ }} variant="h4">{data.aboutMe.edu}</Typography>
+    {data.aboutMe.edus.map((edu, i) => {
+      return <Typography key={i} style={{ }} variant="body2">{edu}</Typography>
+    })}
+  </Grid>;
 
   const body = <Container>
     <ReactResizeDetector handleWidth handleHeight onResize={(width, height) => {
@@ -299,7 +299,7 @@ export const AboutMe = ({}) => {
     </Hidden>
   </Container>;
     
-  return isSmDown ? <div
+  return isSmDown || !process.browser ? <div
     className={classes.aboutMeBackground}
     style={{
       height: 'initial',
