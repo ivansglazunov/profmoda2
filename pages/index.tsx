@@ -403,6 +403,14 @@ export const MyComment = ({}) => {
         <Typography variant="body2">
           {data.myComment.body}
         </Typography>
+        <div style={{
+          textAlign: 'center', boxShadow: 'inset 0 18px 0 0 white, inset 0 20px 0 0 black',
+          position: 'relative', top: 20,
+        }}>
+          <div style={{ display: 'inline-block', borderRadius: '50%', background: 'white', padding: '0 16px' }}>
+            <FormatQuote style={{ fontSize: 40 }}/>
+          </div>
+        </div>
         <Grid container justify="center" alignItems="center" style={{ marginTop: 16 }}>
           <Grid item xs={8}>
             <Typography variant="body2">
@@ -431,8 +439,8 @@ export const ForWhoPhotoLine = ({}) => {
     slidesToScroll: 1,
     variableWidth: true,
     autoplay: true,
-    speed: 4000,
-    autoplaySpeed: 4000,
+    speed: 10000,
+    autoplaySpeed: 10000,
   };
 
   return <div className={classes.slickContainer}>
