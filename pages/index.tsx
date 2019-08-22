@@ -455,7 +455,7 @@ export const ForWhoPhotoLine = ({}) => {
 
 export const ForWho = ({}) => {
   return <Parallax
-    bgImage={require('../images/forWho.jpeg')}
+    bgImage={require('../images/forWho.jpeg?resize&size=700')}
     strangth={400}
     blur={{ min: 0, max: 10 }}
     renderLayer={wrapParallaxRender(perc => {
@@ -725,7 +725,6 @@ export default () => {
       </Grid>
     </div>
     <Parallax
-      bgImage={require('../images/bg-white.png')}
       strangth={300}
       renderLayer={wrapParallaxRender(perc => {
         let p = perc - 0.8;
@@ -747,6 +746,9 @@ export default () => {
         ></div>;
     })}
     >
+      <Background>
+        <div/>
+      </Background>
       <Header>
         <HeaderContent dateButton={dateButton}/>
       </Header>

@@ -5,8 +5,8 @@ export const Logo = ({ src, padding = '0', style = {} }) => {
 };
 
 export default {
-  vshsdt_logo: require('../images/logo.png'),
-  vshsdt_name: require('../images/vshsdt.png'),
+  vshsdt_logo: require('../images/logo.png?resize&size=400'),
+  vshsdt_name: require('../images/vshsdt.png?resize&size=400'),
   darkColor: '#171717',
   vshsdtColor: '#dbc47c',
   title: ['Открытая','лекция'],
@@ -21,20 +21,20 @@ export default {
   publications: {
     title: 'Публикации в СМИ',
     logos: [
-      <Logo src={require('../images/logo-domashniy-ochag.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-vogue.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-elle.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-the-village.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-moscow.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-afisha.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-ntv.png')} padding={'20%'}/>,
-      <Logo src={require('../images/logo-mos-fash-w.jpg')} padding={'25%'}/>,
+      <Logo src={require('../images/logo-domashniy-ochag.png?resize&size=400')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-vogue.png?resize&size=400')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-elle.png?resize&size=400')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-the-village.png?resize&size=400')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-moscow.png?resize&size=400')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-afisha.png?resize&size=400')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-ntv.png?resize&size=400')} padding={'20%'}/>,
+      <Logo src={require('../images/logo-mos-fash-w.jpg?resize&size=400')} padding={'25%'}/>,
     ],
   },
   aboutMe: {
     name: 'Дарья Щербакова',
     rang: 'Руководитель факультета стилистики и моды в ВШСДТ',
-    photo: require('../images/photo.jpg'),
+    photo: require('../images/photo.jpg?resize&size=700'),
     exp: 'Экспертность',
     exps: [
       'Спикер Деловой России, бизнес тренингов',
@@ -50,8 +50,8 @@ export default {
   },
   myComment: {
     title: 'От автора',
-    photo: require('../images/aboutMe.jpeg'),
-    sign: require('../images/sign.jpg'),
+    photo: require('../images/aboutMe.jpeg?resize&size=700'),
+    sign: require('../images/sign.jpg?resize&size=200'),
     body: <><b>Я открыла свой первый бизнес в 19 лет</b> - школа дизайна одежды. Об этом можно прочесть во многих интервью обо мне. За 10 лет на руководящей должности, я прошла большой путь с клиентами, от создания эскизов, до производства, выходов на международные подиумы. Более 5 000 наших клиентов, обрели профессию мечты: свадебные салоны, ателье, шоу - румы, собственные марки одежды.</>,
     me: <b>Мода - это не только моя профессия,<br/>это моя жизнь.</b>,
   },
@@ -77,10 +77,10 @@ export default {
   partners: {
     title: 'Наши партнеры',
     logos: [
-      <Logo src={require('../images/logo-mhpi.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-moscow.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-white.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-garderob.png')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-mhpi.png?resize&size=300')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-moscow.png?resize&size=300')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-white.png?resize&size=300')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-garderob.png?resize&size=300')} padding={'4%'}/>,
     ],
   },
   rules: {
@@ -93,6 +93,6 @@ export default {
     ],
   },
   map: {
-    image: require('../images/map.jpg'),
+    image: require('../images/map.jpg?resize&size=700'),
   },
 };
