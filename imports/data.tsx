@@ -63,7 +63,13 @@ export default {
       <><b>Профессионалы индустрии</b> которые хотят увидеть больший диапазон своей деятельности и развития.</>,
       <><b>Предприниматели</b> и владельцы крупного бизнеса всегда ищущие эффективные решения и направления развития своего проекта.</>,
     ],
-    bgImage: require('../images/for-who.jpeg?resize&size=700'),
+    bgImage: require('../images/for-who.jpeg'),
+    images: [
+      require('../images/publications.jpeg?resize&size=400'),
+      require('../images/1.jpg?resize&size=400'),
+      require('../images/2.jpg?resize&size=400'),
+      require('../images/3.jpg?resize&size=400'),
+    ],
   },
   programm: {
     title: 'Программа лекции',

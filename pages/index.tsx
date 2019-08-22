@@ -113,6 +113,7 @@ const useStyle = makeStyles(() => ({
   slickContainer: {
     '& .slick-slider': {
       height: 300,
+      overflowY: 'hidden',
     }
   },
   map: {
@@ -246,6 +247,7 @@ export const AboutMe = ({}) => {
   const classes = useStyle();
   const theme = useTheme<Theme>();
   const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const isSmDown = useMediaQuery(theme.breakpoints.down('sm'));
 
     const photoItem = <Grid item xs={12} md={4} lg={4} style={{
       ...(isMdUp ? {
@@ -298,7 +300,7 @@ export const AboutMe = ({}) => {
     </Hidden>
   </Container>;
     
-  return isMobile ? <div
+  return isSmDown ? <div
     className={classes.aboutMeBackground}
     style={{
       height: 'initial',
@@ -446,10 +448,9 @@ export const ForWhoPhotoLine = ({}) => {
 
   return <div className={classes.slickContainer}>
     <Slider {...settings}>
-      <div style={{ height: 300 }}><img src={require('../images/publications.jpeg?resize&size=400')} style={{ height: 300 }}/></div>
-      <div style={{ height: 300 }}><img src={require('../images/1.jpg?resize&size=400')} style={{ height: 300 }}/></div>
-      <div style={{ height: 300 }}><img src={require('../images/2.jpg?resize&size=400')} style={{ height: 300 }}/></div>
-      <div style={{ height: 300 }}><img src={require('../images/3.jpg?resize&size=400')} style={{ height: 300 }}/></div>
+      {data.forWho.images.map((image, i) => {
+        return <div key={i} style={{ height: 300 }}><img src={image} style={{ height: 300 }}/></div>;
+      })}
     </Slider>
   </div>;
 };
@@ -725,35 +726,40 @@ export default () => {
         </Hidden>
       </Grid>
     </div>
-    <Parallax
-      strangth={300}
-      renderLayer={wrapParallaxRender(perc => {
-        let p = perc - 0.8;
-        if (p <= 0) p = 0;
-        else p *= 5;
-
-        const w = p * 250;
-
-        return <div
-          style={{
-            position: 'absolute',
-            zIndex: 1,
-            background: `rgba(255, 255, 255)`,
-            left: `0%`,
-            top: '0%',
-            height: '100%',
-            width: `${w < 100 ? w : 100}%`,
-          }}
-        ></div>;
-    })}
-    >
-      <Background>
-        <div/>
-      </Background>
-      <Header>
+    {isMobile
+      ? <Header>
         <HeaderContent dateButton={dateButton}/>
       </Header>
-    </Parallax>
+      : <Parallax
+        strangth={300}
+        renderLayer={wrapParallaxRender(perc => {
+          let p = perc - 0.8;
+          if (p <= 0) p = 0;
+          else p *= 5;
+
+          const w = p * 250;
+
+          return <div
+            style={{
+              position: 'absolute',
+              zIndex: 1,
+              background: `rgba(255, 255, 255)`,
+              left: `0%`,
+              top: '0%',
+              height: '100%',
+              width: `${w < 100 ? w : 100}%`,
+            }}
+          ></div>;
+      })}
+      >
+        <Background>
+          <div/>
+        </Background>
+        <Header>
+          <HeaderContent dateButton={dateButton}/>
+        </Header>
+      </Parallax>
+    }
     <Heading>
       <HeadingTitle>{data.publications.title}</HeadingTitle>
     </Heading>

@@ -10,7 +10,7 @@ module.exports = withPlugins([
   }],
   [optimizedImages, {
     optimizeImages: true,
-    optimizeImagesInDev: true,
+    optimizeImagesInDev: false,
   }],
 ], {
   hmr: false,
