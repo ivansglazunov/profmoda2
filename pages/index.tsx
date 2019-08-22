@@ -207,13 +207,7 @@ export const HeadingTitle = ({ children = null, className = [], style = {}, ...p
 };
 
 export const Publications = ({}) => {
-  return <Parallax
-    // bgImage={require('../images/publications.jpeg')}
-    strangth={300}
-  >
-    <Background>
-      <div></div>
-    </Background>
+  return <div>
     <Container>
       <Grid container justify="space-around" alignItems="center" style={{ marginTop: 64 }}>
         {data.publications.logos.map((logo, i) => (
@@ -225,15 +219,11 @@ export const Publications = ({}) => {
         ))}
       </Grid>
     </Container>
-  </Parallax>
+  </div>
 };
 
 export const Partners = ({}) => {
-  return <Parallax
-    // bgImage={require('../images/partners.jpeg')}
-    strangth={300}
-    blur={{ min: -2, max: 5 }}
-  >
+  return <div>
     <Background>
       <div></div>
     </Background>
@@ -248,7 +238,7 @@ export const Partners = ({}) => {
         ))}
       </Grid>
     </Container>
-  </Parallax>
+  </div>
 };
 
 export const AboutMe = ({}) => {
@@ -289,8 +279,35 @@ export const AboutMe = ({}) => {
         return <Typography key={i} style={{ }} variant="body2">{edu}</Typography>
       })}
     </Grid>;
+
+  const body = <Container>
+    <ReactResizeDetector handleWidth handleHeight onResize={(width, height) => {
+      setSize({ width, height });
+    }}/>
+    <Hidden implementations="css" smDown>
+      <Grid container alignItems="center" justify="center" classes={{ container: classes.aboutMeContainer }}>
+        {photoItem}
+        {aboutItem}
+      </Grid>
+    </Hidden>
+    <Hidden implementations="css" mdUp>
+      <Grid container alignItems="center" justify="center" classes={{ container: classes.aboutMeContainer }}>
+        {aboutItem}
+        {photoItem}
+      </Grid>
+    </Hidden>
+  </Container>;
     
-  return  <Parallax
+  return isMobile ? <div
+    className={classes.aboutMeBackground}
+    style={{
+      height: 'initial',
+      backgroundColor: '#bf9b55',
+      backgroundImage: 'linear-gradient(150deg, #ebe299 0%, rgb(150, 116, 78) 100%)',
+    }}
+  >
+    {body}
+  </div> : <Parallax
     strangth={300}
     renderLayer={wrapParallaxRender(perc => {
       const p = perc > 0.2 ? (perc - 0.2) : 0;
@@ -303,23 +320,7 @@ export const AboutMe = ({}) => {
           backgroundImage: 'linear-gradient(150deg, #ebe299 0%, rgb(150, 116, 78) 100%)',
         }}
       >
-        <Container>
-          <ReactResizeDetector handleWidth handleHeight onResize={(width, height) => {
-            setSize({ width, height });
-          }}/>
-          <Hidden implementations="css" smDown>
-            <Grid container alignItems="center" justify="center" classes={{ container: classes.aboutMeContainer }}>
-              {photoItem}
-              {aboutItem}
-            </Grid>
-          </Hidden>
-          <Hidden implementations="css" mdUp>
-            <Grid container alignItems="center" justify="center" classes={{ container: classes.aboutMeContainer }}>
-              {aboutItem}
-              {photoItem}
-            </Grid>
-          </Hidden>
-        </Container>
+        {body}
       </div>;
     })}
   >
@@ -455,7 +456,7 @@ export const ForWhoPhotoLine = ({}) => {
 
 export const ForWho = ({}) => {
   return <Parallax
-    bgImage={require('../images/forWho.jpeg?resize&size=700')}
+    bgImage={data.forWho.bgImage}
     strangth={400}
     blur={{ min: 0, max: 10 }}
     renderLayer={wrapParallaxRender(perc => {
