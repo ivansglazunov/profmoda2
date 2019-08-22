@@ -458,6 +458,22 @@ export const ForWhoPhotoLine = ({}) => {
 };
 
 export const ForWho = ({}) => {
+  const theme = useTheme<Theme>();
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const isSmDown = useMediaQuery(theme.breakpoints.down('sm'));
+
+  if (isSmDown) {
+    return <Container style={{ position: 'relative', zIndex: 5 }}>
+      <Grid container justify="space-around" alignItems="center" style={{ paddingTop:64, paddingBottom: 64 }}>
+        {data.forWho.variants.map((variant, i) => (
+          <Grid key={i} item xs={12} sm={10} style={{ paddingBottom: 16 }}>
+            {variant}
+          </Grid>
+        ))}
+      </Grid>
+    </Container>;
+  }
+
   return <Parallax
     bgImage={data.forWho.bgImage}
     strangth={400}
@@ -475,7 +491,7 @@ export const ForWho = ({}) => {
     })}
   >
     <Container style={{ position: 'relative', zIndex: 5 }}>
-      <Grid container justify="space-around" alignItems="center" style={{ paddingTop: 128, paddingBottom: 64 }}>
+      <Grid container justify="space-around" alignItems="center" style={{ paddingTop: 64, paddingBottom: 64 }}>
         {data.forWho.variants.map((variant, i) => (
           <Grid key={i} item xs={12} sm={10} style={{ paddingBottom: 16 }}>
             {variant}
