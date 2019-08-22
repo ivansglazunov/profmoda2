@@ -14,7 +14,7 @@ import { initApollo } from '../imports/apollo';
 import { getDataFromTree } from '@apollo/react-ssr';
 import config from '../imports/config';
 
-const theme: Theme = createMuiTheme();
+const theme = createMuiTheme();
 
 const tks = Object.keys(theme.typography);
 for (let t = 0; t < tks.length; t++) {

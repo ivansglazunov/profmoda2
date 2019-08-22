@@ -279,7 +279,7 @@ export const AboutMe = ({}) => {
     </Grid>;
 
     const aboutItem = <Grid item xs={12} md={8} lg={7} style={{ paddingBottom: isMdUp ? 32 : 0 }}>
-      <Typography style={{ marginBottom: 16, paddingTop: 12, paddingBottom: 12 }} variant="h3">{data.aboutMe.name}</Typography>
+      <Typography style={{ marginBottom: 16, paddingTop: 32, paddingBottom: 12 }} variant="h3">{data.aboutMe.name}</Typography>
       <Typography style={{ }} variant="h4">{data.aboutMe.exp}</Typography>
       {data.aboutMe.exps.map((exp, i) => {
         return <Typography key={i} style={{ }} variant="body2">{exp}</Typography>
