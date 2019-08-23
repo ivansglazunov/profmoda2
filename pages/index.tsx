@@ -105,8 +105,8 @@ const useStyle = makeStyles(() => ({
     paddingTop: 100,
     paddingBottom: 150,
     backgroundImage: `url(${data.myComment.photo})`,
-    backgroundAttachment: 'fixed',
-    backgroundSize: 'cover',
+    // backgroundAttachment: 'fixed',
+    backgroundSize: '100%',
     backgroundPosition: 'right center',
   },
   slickContainer: {
@@ -167,9 +167,15 @@ export const HeaderContent = ({ dateButton, className = [], ...props }) => {
     <div style={{ float: 'right', width: isMdUp ? 'initial' : '100%', textAlign: 'center', paddingBottom: 64 }}>
       <img src={data.vshsdt_logo} style={{ width: isMdUp ? 300 : 200 }}/>
       <br/>
-      <img src={data.vshsdt_name} style={{ width: isMdUp ? 300 : 200 }}/>
+      <Typography variant="h5" style={{ color: '#d1b56c' }}>
+        Высшая Школа Стилистики<br/>Дизайна и Технологий
+      </Typography>
+      <Typography variant="body2" style={{ color: '#d1b56c', fontSize: 14 }}>
+        Российское академическое онлайн образование
+      </Typography>
     </div>
     {data.title.map((title, i) => <Typography key={i} variant={isSmUp ? 'h2' : 'h3'} style={{ color: 'white' }}>{title}</Typography>)}
+    <Typography variant="body2" style={{ color: 'white' }}>Для студентов ВШСДТ и всех желающих</Typography>
     <Typography variant="h4" style={{ color: 'white', marginTop: 64 }}>{data.description}</Typography>
     <Typography variant="h4" style={{ color: 'white' }}>{data.definition}</Typography>
 
@@ -209,7 +215,7 @@ export const HeadingTitle = ({ children = null, className = [], style = {}, ...p
 export const Publications = ({}) => {
   return <div>
     <Container>
-      <Grid container justify="space-around" alignItems="center" style={{ marginTop: 64 }}>
+      <Grid container justify="center" alignItems="center" style={{ marginTop: 64 }}>
         {data.publications.logos.map((logo, i) => (
           <Grid key={i} item xs={4} sm={3}>
             <Flip top delay={100}>
@@ -402,7 +408,7 @@ export const MyComment = ({}) => {
       </div>
     </Hidden>
     <Hidden implementations="css" smUp>
-      <div className={classes.myComment} style={{ height: 400 }}>
+      <div className={classes.myComment} style={{ height: 300 }}>
       </div>
       <Paper square style={{ padding: 32, paddingBottom: 84 }}>
         <Typography variant="body2">
