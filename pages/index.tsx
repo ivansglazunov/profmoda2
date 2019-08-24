@@ -134,16 +134,16 @@ const useStyle = makeStyles(() => ({
 
 const InfiniteCalendarWrapped = withRange(withDefaultProps(Calendar));
 
-const start = new Date(2019, 7, 21, 19);
-const end = new Date(2019, 7, 21, 21, 30);
+const start = new Date(2019, 8, 10, 18, 30);
+const end = new Date(2019, 8, 10, 21);
 
-export const CalendarButtonContent = () => {
-  const [time, setTime] = React.useState<any>(moment(start).calendar());
+export const CalendarButtonContent = ({ style }) => {
+  const [time, setTime] = React.useState<any>(moment(start).format('Do MMMM HH:mm'));
   useInterval(() => {
-    setTime(moment(start).calendar());
+    setTime(moment(start).format('Do MMMM HH:mm'));
   }, 3000)
   return <>
-    <CalendarToday style={{ marginRight: 6 }} color='secondary' /> {time}
+    <CalendarToday style={{ marginRight: 6, ...style }} color='secondary' /> {time}
   </>;
 };
 
@@ -189,7 +189,10 @@ export const HeaderContent = ({ DateButton, className = [], ...props }) => {
     </Typography>
 
     <Hidden implementation="css" smUp>
-      <div style={{ marginTop: 16 }}><DateButton style={{ color: 'white' }}/></div>
+      <div style={{ marginTop: 16 }}><DateButton style={{ color: 'white', fontSize: 20 }}/></div>
+      <Typography variant="body2" style={{ color: 'white', marginTop: 16 }}>
+        <b>Метро</b> Алексеевская
+      </Typography>
     </Hidden>
   </div>;
 };
@@ -265,16 +268,22 @@ export const AboutMe = ({}) => {
       paddingBottom: 64,
     })
   }} className={classes.aboutMePhotoItem}>
-    <img src={data.aboutMe.photo} style={{
-      // maxHeight: isMdUp ? 'calc(60vh - 128px)' : 'initial',
-      maxWidth: '100%',
-      width: '100%',
-      padding: isMdUp ? '0 16px' : 0,
-      marginBottom: isMdUp ? -10 : 0,
-      // boxShadow: `0 0 0 10px ${data.darkColor}, 0 0 0 17px #fff`,
-      // marginTop: 60,
-      // marginBottom: 60,
-    }}/>
+    <Hidden implementation="css" smDown>
+      <img src={data.aboutMe.photo2} style={{
+        maxWidth: '100%',
+        width: '100%',
+        padding: isMdUp ? '0 16px' : 0,
+        marginBottom: isMdUp ? -10 : 0,
+      }}/>
+    </Hidden>
+    <Hidden implementation="css" mdUp>
+      <img src={data.aboutMe.photo1} style={{
+        maxWidth: '100%',
+        width: '100%',
+        padding: isMdUp ? '0 16px' : 0,
+        marginBottom: isMdUp ? -10 : 0,
+      }}/>
+    </Hidden>
   </Grid>;
 
   const aboutItem = <Grid item xs={12} md={8} lg={7} style={{ paddingBottom: isMdUp ? 64 : 0 }}>
@@ -352,6 +361,7 @@ export const Banner = ({ children, ...props }) => {
     style={{ height: '100%', width: '100%', boxSizing: 'border-box', ...props.style }}
   >
     <Paper
+      square
       style={{
         width: '100%',
         height: '100%',
@@ -719,7 +729,7 @@ export default () => {
     }}
     {...props}
   >
-    <CalendarButtonContent />
+    <CalendarButtonContent style={props.style} />
   </Button>;
 
   const popoverCalendar = <Popover
