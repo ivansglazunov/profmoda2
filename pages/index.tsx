@@ -1,8 +1,9 @@
 import * as React from 'react';
 import moment from 'moment';
 import classnames from 'classnames';
+import { event } from "../imports/analitics";
 
-import { makeStyles, Typography, Paper, Grid, useMediaQuery, Theme, Hidden, IconButton, Menu, Button, Popover, Fab } from '@material-ui/core';
+import { makeStyles, Typography, Paper, Grid, useMediaQuery, Theme, Hidden, IconButton, Menu, Button, Popover, Fab, Dialog, DialogContent, DialogContentText, DialogActions } from '@material-ui/core';
 import { yellow, red } from '@material-ui/core/colors';
 
 import Flip from 'react-reveal/Flip';
@@ -25,12 +26,16 @@ import { withDefaultProps } from 'react-infinite-calendar/lib/Calendar';
 import School from '@material-ui/icons/School';
 import Done from '@material-ui/icons/Done';
 import Train from '@material-ui/icons/Train';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import ChevronRight from '@material-ui/icons/ChevronRight';
+import FiberManualRecord from '@material-ui/icons/FiberManualRecord';
 import FormatQuote from '@material-ui/icons/FormatQuote';
 import Phone from '@material-ui/icons/Phone';
 import CalendarToday from '@material-ui/icons/CalendarToday';
 
 import '../imports/i18n';
 import { List, ListItem } from '@material-ui/core';
+import { VerticalForm } from '../imports/forms';
 
 export const wrapParallaxRender = (callback) => (perc) => {
   return callback(!process.browser ? 0 : perc);
@@ -65,9 +70,6 @@ const useStyle = makeStyles(() => ({
   header: {
     width: '100%',
     minHeight: '50vh',
-    // backgroundImage: `url(${require('../images/bg-white.png')})`,
-    // backgroundRepeat: 'repeat',
-    // backgroundAttachment: 'fixed',
     backgroundColor: data.darkColor,
   },
   headerContent: {
@@ -85,7 +87,7 @@ const useStyle = makeStyles(() => ({
   headingTitle: {
     display: 'inline-block',
     position: 'relative',
-    zIndex: 5,
+    zIndex: 2,
     marginTop: '-12%',
   },
   aboutMeBackground: {
@@ -105,15 +107,15 @@ const useStyle = makeStyles(() => ({
     paddingTop: 100,
     paddingBottom: 150,
     backgroundImage: `url(${data.myComment.photo})`,
-    // backgroundAttachment: 'fixed',
-    backgroundSize: '100%',
+    backgroundAttachment: 'fixed',
+    backgroundSize: '140%',
     backgroundPosition: 'right center',
   },
   slickContainer: {
     '& .slick-slider': {
       height: 300,
       overflowY: 'hidden',
-    }
+    },
   },
   map: {
     position: 'relative',
@@ -157,7 +159,7 @@ export const Header = ({ children = null, className = [], ...props }) => {
   </Container>;
 };
 
-export const HeaderContent = ({ dateButton, className = [], ...props }) => {
+export const HeaderContent = ({ DateButton, className = [], ...props }) => {
   const classes = useStyle();
   const theme = useTheme<Theme>();
   const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
@@ -186,8 +188,8 @@ export const HeaderContent = ({ dateButton, className = [], ...props }) => {
       {data.vshsdt.fullOf}
     </Typography>
 
-    <Hidden implementations="css" smUp>
-      <div style={{ marginTop: 16, color: 'white' }}>{dateButton}</div>
+    <Hidden implementation="css" smUp>
+      <div style={{ marginTop: 16 }}><DateButton style={{ color: 'white' }}/></div>
     </Hidden>
   </div>;
 };
@@ -275,7 +277,7 @@ export const AboutMe = ({}) => {
     }}/>
   </Grid>;
 
-  const aboutItem = <Grid item xs={12} md={8} lg={7} style={{ paddingBottom: isMdUp ? 32 : 0 }}>
+  const aboutItem = <Grid item xs={12} md={8} lg={7} style={{ paddingBottom: isMdUp ? 64 : 0 }}>
     <Typography style={{ marginBottom: 16, paddingTop: 32, paddingBottom: 12 }} variant="h3">{data.aboutMe.name}</Typography>
     <Typography style={{ }} variant="h4">{data.aboutMe.exp}</Typography>
     {data.aboutMe.exps.map((exp, i) => {
@@ -291,13 +293,13 @@ export const AboutMe = ({}) => {
     <ReactResizeDetector handleWidth handleHeight onResize={(width, height) => {
       setSize({ width, height });
     }}/>
-    <Hidden implementations="css" smDown>
+    <Hidden implementation="css" smDown>
       <Grid container alignItems="center" justify="center" classes={{ container: classes.aboutMeContainer }}>
         {photoItem}
         {aboutItem}
       </Grid>
     </Hidden>
-    <Hidden implementations="css" mdUp>
+    <Hidden implementation="css" mdUp>
       <Grid container alignItems="center" justify="center" classes={{ container: classes.aboutMeContainer }}>
         {aboutItem}
         {photoItem}
@@ -376,7 +378,7 @@ export const Banner = ({ children, ...props }) => {
 export const MyComment = ({}) => {
   const classes = useStyle();
   return <>
-    <Hidden implementations="css" xsDown>
+    <Hidden implementation="css" xsDown>
       <div className={classes.myComment}>
         <Grid container style={{ height: '100%', width: '100%' }} alignItems="center" justify="center">
           <Grid item xs={12} sm={10} md={6} lg={6}>
@@ -407,7 +409,7 @@ export const MyComment = ({}) => {
         </Grid>
       </div>
     </Hidden>
-    <Hidden implementations="css" smUp>
+    <Hidden implementation="css" smUp>
       <div className={classes.myComment} style={{ height: 300 }}>
       </div>
       <Paper square style={{ padding: 32, paddingBottom: 84 }}>
@@ -437,21 +439,50 @@ export const MyComment = ({}) => {
   </>;
 };
 
+export const PrevArrow = ({ className, style, onClick }: any) => {
+  return <IconButton style={{
+    zIndex: 1,
+    position: 'absolute',
+    left: 0,
+    top: '43%',
+    background: '#000000a8',
+    padding: 7,
+    margin: 16,
+    ...style,
+  }} onClick={onClick} className={className}>
+    <ChevronLeft fontSize="large" style={{ color: 'white' }}/>
+  </IconButton>;
+};
+
+export const NextArrow = ({ className, style, onClick }: any) => {
+  return <IconButton style={{
+    zIndex: 1,
+    position: 'absolute',
+    right: 0,
+    top: '43%',
+    background: '#000000a8',
+    padding: 7,
+    margin: 16,
+    ...style,
+  }} onClick={onClick} className={className}>
+    <ChevronRight fontSize="large" style={{ color: 'white' }}/>
+  </IconButton>;
+};
+
 export const ForWhoPhotoLine = ({}) => {
   const classes = useStyle();
 
   const settings = {
     className: "slider variable-width",
     dots: false,
-    arrows: false,
     infinite: true,
     centerMode: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
-    autoplay: true,
-    speed: 10000,
-    autoplaySpeed: 10000,
+    autoplay: false,
+    prevArrow: <PrevArrow/>,
+    nextArrow: <NextArrow/>,
   };
 
   return <div className={classes.slickContainer}>
@@ -471,11 +502,18 @@ export const ForWho = ({}) => {
   if (isSmDown) {
     return <Container style={{ position: 'relative', zIndex: 5 }}>
       <Grid container justify="space-around" alignItems="center" style={{ paddingTop:64, paddingBottom: 64 }}>
-        {data.forWho.variants.map((variant, i) => (
-          <Grid key={i} item xs={12} sm={10} style={{ paddingBottom: 16 }}>
-            {variant}
-          </Grid>
-        ))}
+        <Grid item xs={12} sm={10}>
+          <List>
+            {data.forWho.variants.map((variant, i) => (
+              <ListItem key={i}>
+                <FiberManualRecord/>
+                <div style={{ paddingLeft: 16 }}>
+                  {variant}
+                </div>
+              </ListItem>
+            ))}
+          </List>
+        </Grid>
       </Grid>
     </Container>;
   }
@@ -511,15 +549,11 @@ export const ForWho = ({}) => {
 export const Programm = ({}) => {
   const classes = useStyle();
   const theme = useTheme<Theme>();
+  const [open, setOpen] = React.useState(false);
+  const [delay, setDelay] = React.useState(0);
 
   const aboutItem = <Grid item xs={12} md={6} lg={5}>
     <Typography style={{ }} align="justify" variant="body2">{data.programm.body}</Typography>
-  </Grid>;
-
-  const stepsItem = <Grid item xs={12} md={6} lg={5} style={{ paddingTop: 32 }}>
-    {data.programm.steps.map((step, i) => (
-      <Typography key={i} style={{ paddingTop: 6, paddingBottom: 6 }} variant="h5">- {step}</Typography>
-    ))}
   </Grid>;
 
   return <div
@@ -529,13 +563,59 @@ export const Programm = ({}) => {
       backgroundImage: 'linear-gradient(150deg, #ebe299 0%, rgb(150, 116, 78) 100%)',
     }}
   >
+    <Dialog
+      open={open}
+      onClose={() => {
+        event('form-close');
+        setOpen(false);
+      }}
+    >
+      <div style={{
+        background: 'linear-gradient(150deg, rgb(235, 226, 153) 0%, rgb(150, 116, 78) 100%)',
+        width: 377,
+      }}>
+        {delay > 0
+        ? <div style={{
+          textAlign: 'center',
+          padding: 32,
+        }}>
+          <Done fontSize="large" style={{ fontSize: 30 }}/>
+          <Typography variant="h5">Отправлено</Typography>
+        </div>
+        : <VerticalForm onDone={() => {
+            event('thankyou');
+            setDelay(5);
+            const interval = setInterval(() => {
+              if (!(delay)) {
+                setOpen(false);
+                clearInterval(interval);
+                setTimeout(() => setDelay(0), 1000);
+              } else {
+                setDelay(delay - 1);
+              }
+            }, 1000);
+          }}/>
+        }
+      </div>
+    </Dialog>
     <Container style={{ paddingTop: 64, paddingBottom: 120 }}>
       <Grid container alignItems="center" justify="center" spacing={6}>
         <Grid item xs={12}>
           <Typography style={{ textAlign: 'center', marginBottom: 16, paddingTop: 12, paddingBottom: 12 }} variant="h3">{data.programm.title}</Typography>
         </Grid>
         {aboutItem}
-        {stepsItem}
+        <Grid item xs={12} style={{ textAlign: 'center' }}>
+          <Button variant="contained" size="large" style={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            background: 'linear-gradient(150deg, rgb(235, 226, 153) 0%, rgb(206, 188, 128) 100%)',
+          }} onClick={() => {
+            setOpen(true);
+            event('form-open');
+          }}>
+            ПРИНЯТЬ УЧАСТИЕ
+          </Button>
+        </Grid>
       </Grid>
     </Container>
   </div>;
@@ -546,7 +626,7 @@ export const Rules = ({}) => {
   const theme = useTheme<Theme>();
 
   const stepsItem = <Grid item xs={12} style={{ paddingTop: 32 }}>
-    <Hidden implementations="css" smUp>
+    <Hidden implementation="css" smUp>
       <List>
       {data.rules.steps.map((step, i) => (
         <ListItem key={i}>
@@ -555,7 +635,7 @@ export const Rules = ({}) => {
       ))}
       </List>
     </Hidden>
-    <Hidden implementations="css" xsDown>
+    <Hidden implementation="css" xsDown>
       <Grid container alignItems="center" justify="center">
         {data.rules.steps.map((step, i) => (
           <Grid key={i} item sm={5} md={4} style={{ background: `rgba(255, 255, 255, 0.05)`, margin: 32, padding: 32 }}>
@@ -628,12 +708,13 @@ export default () => {
 
   const [calendarOpen, setCalendarOpen] = React.useState<any>(null);
 
-  const dateButton = <Button
+  const DateButton = (props) => <Button
     variant="outlined"
-    style={{ padding: 6 }}
+    style={{ padding: 6, ...props.style }}
     onClick={event => {
       setCalendarOpen(event.currentTarget);
     }}
+    {...props}
   >
     <CalendarButtonContent />
   </Button>;
@@ -708,9 +789,9 @@ export default () => {
         transition: 'padding 1s ease',
         textAlign: 'center',
       }}>
-        <Hidden implementations="css" xsDown>
+        <Hidden xsDown>
           <Grid item xs>
-            {dateButton}
+            <DateButton/>
           </Grid>
           <Grid item xs style={{ position: 'relative' }}>
             <Typography variant="h4">
@@ -721,7 +802,7 @@ export default () => {
             +7 985 427-12-56
           </Grid>
         </Hidden>
-        <Hidden implementations="css" smUp>
+        <Hidden smUp>
           <Fab
             color="secondary"
             href="tel:+7 985 427-12-56"
@@ -753,7 +834,7 @@ export default () => {
     </div>
     {isSmDown
       ? <Header>
-        <HeaderContent dateButton={dateButton}/>
+        <HeaderContent DateButton={DateButton}/>
       </Header>
       : <Parallax
         strangth={300}
@@ -781,7 +862,7 @@ export default () => {
           <div/>
         </Background>
         <Header>
-          <HeaderContent dateButton={dateButton}/>
+          <HeaderContent DateButton={DateButton}/>
         </Header>
       </Parallax>
     }
@@ -813,11 +894,6 @@ export default () => {
         <TextBackComponent />
       </Grid>
     </Grid>
-    <iframe src="https://billing.styleschool.ru/event/o9FNECyGNLKor3vYp/simple?colorPrimary=yellow" style={{
-      border: 0,
-      width: '100%',
-      height: 500,
-    }}></iframe>
     <Heading/>
     <Grid container style={{ backgroundColor: data.darkColor }} justify="center" alignItems="center">
       <Grid item xs={12} md={4} style={{ padding: 16 }}>

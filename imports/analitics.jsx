@@ -5,9 +5,9 @@ import ReactPixel from "react-facebook-pixel";
 import ya, { YMInitializer } from "react-yandex-metrika";
 import ReactGA from "react-ga";
 
-const FP = "739243429824582";
-const GA = "UA-64254068-4";
-const YM = 54094318;
+const FP = 556647711153866;
+const GA = "UA-64254068-3";
+const YM = 53888251;
 
 var Chance = require("chance");
 var chance = new Chance();

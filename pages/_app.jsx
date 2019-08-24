@@ -45,29 +45,13 @@ for (let key in theme.typography) {
   }
 }
 
-// @ts-ignore
-theme.palette.passedSuccess = {
-  main: "#bbffb3",
-  light: "#bbffb3",
-  dark: "#bbffb3",
-  contrastText: theme.palette.common.black
-};
+theme.palette.primary.light = '#000';
+theme.palette.primary.main = '#000';
+theme.palette.primary.dark = '#000';
 
-// @ts-ignore
-theme.palette.awaitCheck = {
-  main: "#ecffb3",
-  light: "#ecffb3",
-  dark: "#ecffb3",
-  contrastText: theme.palette.common.black
-};
-
-// @ts-ignore
-theme.palette.passedWithErrors = {
-  main: "#ffc8b3",
-  light: "#ffc8b3",
-  dark: "#ffc8b3",
-  contrastText: theme.palette.common.black
-};
+theme.palette.secondary.light = '#000';
+theme.palette.secondary.main = '#000';
+theme.palette.secondary.dark = '#000';
 
 function CreateComponent(Component, pageProps, apolloClient) {
   return (
@@ -96,40 +80,40 @@ export default class MyApp extends App {
     const jssStyles = document.querySelector('#jss-server-side');
 
     // TODO WTF it not regenerated? disabled for check
-    // if (jssStyles) {
-    //   jssStyles.parentNode.removeChild(jssStyles);
-    // }
-  }
-  static async getInitialProps({ Component, ctx: { req: { cookies } } }) {
-    const token = process.browser ? Cookie.get('token') : cookies ? cookies.token : undefined;
-    const apolloClient = initApollo({}, token);
-    try {
-      await getDataFromTree(CreateComponent(Component, {}, apolloClient));
-    } catch (error) {
-      console.log({ error: await error });
+    if (jssStyles) {
+      // jssStyles.parentNode.removeChild(jssStyles);
     }
-    Head.rewind();
-    const apolloState = apolloClient.extract();
-    return {
-      token,
-      apolloState,
-    };
   }
+  // static async getInitialProps({ Component, ctx: { req: { cookies } } }) {
+  //   const token = process.browser ? Cookie.get('token') : cookies ? cookies.token : undefined;
+  //   const apolloClient = initApollo({}, token);
+  //   try {
+  //     await getDataFromTree(CreateComponent(Component, {}, apolloClient));
+  //   } catch (error) {
+  //     console.log({ error: await error });
+  //   }
+  //   Head.rewind();
+  //   const apolloState = apolloClient.extract();
+  //   return {
+  //     token,
+  //     apolloState,
+  //   };
+  // }
   constructor(props) {
     super(props);
-    if (config.apolloEnabled) {
-      if (typeof window === 'object') {
-        // @ts-ignore
-        this.apolloClient = initApollo(window.__APOLLO_STATE__, props.token);
-      } else {
-        // @ts-ignore
-        global.__APOLLO_STATE__ = props.apolloState;
-        // @ts-ignore
-        props.apolloState;
-        // @ts-ignore
-        this.apolloClient = initApollo(props.apolloState, props.token);
-      }
-    }
+    // if (config.apolloEnabled) {
+    //   if (typeof window === 'object') {
+    //     // @ts-ignore
+    //     this.apolloClient = initApollo(window.__APOLLO_STATE__, props.token);
+    //   } else {
+    //     // @ts-ignore
+    //     global.__APOLLO_STATE__ = props.apolloState;
+    //     // @ts-ignore
+    //     props.apolloState;
+    //     // @ts-ignore
+    //     this.apolloClient = initApollo(props.apolloState, props.token);
+    //   }
+    // }
   }
   render() {
     // @ts-ignore

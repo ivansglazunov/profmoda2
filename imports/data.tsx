@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export const Logo = ({ src, padding = '0', style = {} }) => {
   return <div style={{ padding, ...style }}>
     <img src={src} style={{ width: '100%', }} />
@@ -5,8 +7,8 @@ export const Logo = ({ src, padding = '0', style = {} }) => {
 };
 
 export default {
-  vshsdt_logo: require('../images/logo.png'),
-  vshsdt_name: require('../images/vshsdt.png'),
+  vshsdt_logo: require('../images/logo.png?resize&size=300'),
+  vshsdt_name: require('../images/vshsdt.png?resize&size=300'),
   darkColor: '#171717',
   vshsdtColor: '#dbc47c',
   title: ['Открытая','лекция'],
@@ -21,20 +23,20 @@ export default {
   publications: {
     title: 'Публикации в СМИ',
     logos: [
-      <Logo src={require('../images/logo-domashniy-ochag.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-vogue.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-elle.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-the-village.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-moscow.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-afisha.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-ntv.png')} padding={'10%'}/>,
-      <Logo src={require('../images/logo-mos-fash-w.jpg')} padding={'10%'}/>,
+      <Logo src={require('../images/logo-domashniy-ochag.png?resize&size=200')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-vogue.png?resize&size=200')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-elle.png?resize&size=200')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-the-village.png?resize&size=200')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-moscow.png?resize&size=200')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-afisha.png?resize&size=200')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-ntv.png?resize&size=200')} padding={'10%'}/>,
+      <Logo src={require('../images/logo-mos-fash-w.jpg?resize&size=200')} padding={'10%'}/>,
     ],
   },
   aboutMe: {
     name: 'Дарья Щербакова',
     rang: 'Руководитель факультета стилистики и моды в ВШСДТ',
-    photo: require('../images/photo.jpg'),
+    photo: require('../images/2.jpg?resize&size=700'),
     exp: 'Экспертность',
     exps: [
       'Спикер Деловой России, бизнес тренингов',
@@ -50,8 +52,8 @@ export default {
   },
   myComment: {
     title: 'От автора',
-    photo: require('../images/aboutMe.jpeg'),
-    sign: require('../images/sign.jpg'),
+    photo: require('../images/aboutMe.jpeg?resize&size=800'),
+    sign: require('../images/sign.jpg?resize&size=150'),
     body: <><b>Я открыла свой первый бизнес в 19 лет</b> - школа дизайна одежды. Об этом можно прочесть во многих интервью обо мне. За 10 лет на руководящей должности, я прошла большой путь с клиентами, от создания эскизов, до производства, выходов на международные подиумы. Более 5 000 наших клиентов, обрели профессию мечты: свадебные салоны, ателье, шоу - румы, собственные марки одежды.</>,
     me: <b>Мода - это не только моя профессия,<br/>это моя жизнь.</b>,
   },
@@ -63,17 +65,16 @@ export default {
       <><b>Профессионалы индустрии</b> которые хотят увидеть больший диапазон своей деятельности и развития.</>,
       <><b>Предприниматели</b> и владельцы крупного бизнеса всегда ищущие эффективные решения и направления развития своего проекта.</>,
     ],
-    bgImage: require('../images/for-who.jpeg'),
+    bgImage: require('../images/for-who.jpeg?resize&size=300'),
     images: [
-      require('../images/publications.jpeg'),
-      require('../images/1.jpg'),
-      require('../images/2.jpg'),
-      require('../images/3.jpg'),
+      require('../images/publications.jpeg?resize&size=300'),
+      require('../images/1.jpg?resize&size=300'),
+      require('../images/3.jpg?resize&size=300'),
     ],
   },
   programm: {
-    title: 'Программа лекции',
-    body: <><b>От автора</b>: “Я училась во Франции в мировой известной школе на факультете Fashion Marketing. Это дало мне огромный масштаб, внутреннюю уверенность в своих силах и желание идти за большой мечтой. На открытой лекции, я расскажу о своем опыте, направлениях развития в Российской фешн индустрии, успешных профессиональных кейсах, с которыми я работала и видела лично “изнанку”, о мировых школах и как сделать первый шаг к мечте.”</>,
+    title: 'От лектора',
+    body: <>“Я училась во Франции в мировой известной школе на факультете Fashion Marketing. Это дало мне огромный масштаб, внутреннюю уверенность в своих силах и желание идти за большой мечтой. На открытой лекции, я расскажу о своем опыте, направлениях развития в Российской фешн индустрии, успешных профессиональных кейсах, с которыми я работала и видела лично “изнанку”, о мировых школах и как сделать первый шаг к мечте.”</>,
     steps: [
       <>Профессия мечты</>,
       <>Успешные кейсы</>,
@@ -84,10 +85,10 @@ export default {
   partners: {
     title: 'Наши партнеры',
     logos: [
-      <Logo src={require('../images/logo-mhpi.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-moscow.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-white.png')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-garderob.png')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-mhpi.png?resize&size=150')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-moscow.png?resize&size=150')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-white.png?resize&size=150')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-garderob.png?resize&size=150')} padding={'4%'}/>,
     ],
   },
   rules: {
@@ -100,6 +101,6 @@ export default {
     ],
   },
   map: {
-    image: require('../images/map.jpg'),
+    image: require('../images/map.jpg?resize&size=500'),
   },
 };
