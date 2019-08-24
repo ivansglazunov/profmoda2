@@ -572,7 +572,7 @@ export const Programm = ({}) => {
     >
       <div style={{
         background: 'linear-gradient(150deg, rgb(235, 226, 153) 0%, rgb(150, 116, 78) 100%)',
-        width: 377,
+        maxWidth: 377,
       }}>
         {delay > 0
         ? <div style={{
@@ -607,14 +607,16 @@ export const Programm = ({}) => {
         <Grid item xs={12} style={{ textAlign: 'center' }}>
           <Button variant="contained" size="large" style={{
             fontSize: 20,
+            padding: 24,
             fontWeight: 'bold',
             background: 'linear-gradient(150deg, rgb(235, 226, 153) 0%, rgb(206, 188, 128) 100%)',
-            borderRadius: 14,
+            borderRadius: 24,
+            border: '2px solid black',
           }} onClick={() => {
             setOpen(true);
             event('form-open');
           }}>
-            ПРИНЯТЬ УЧАСТИЕ
+            ПРИНЯТЬ УЧАСТИЕ В ЛЕКЦИИ
           </Button>
         </Grid>
       </Grid>
@@ -639,7 +641,7 @@ export const Rules = ({}) => {
     <Hidden implementation="css" xsDown>
       <Grid container alignItems="center" justify="center">
         {data.rules.steps.map((step, i) => (
-          <Grid key={i} item sm={5} md={4} style={{ background: `rgba(255, 255, 255, 0.05)`, margin: 32, padding: 32 }}>
+          <Grid key={i} item sm={10} md={4} style={{ background: `rgba(255, 255, 255, 0.05)`, margin: 32, padding: 32 }}>
             <Typography style={{ fontSize: '1.3em', borderBottom: '3px solid white', color: '#fff', paddingBottom: 16 }} variant="body2">{step}</Typography>
           </Grid>
         ))}
