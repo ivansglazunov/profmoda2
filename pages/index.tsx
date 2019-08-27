@@ -616,16 +616,17 @@ export const Programm = ({}) => {
         {aboutItem}
         <Grid item xs={12} style={{ textAlign: 'center' }}>
           <Button variant="contained" size="large" style={{
+            fontSize: 20,
             padding: 5,
             fontWeight: 'bold',
             background: 'linear-gradient(150deg, rgb(235, 226, 153) 0%, rgb(206, 188, 128) 100%)',
             borderRadius: 150,
-            border: '2px solid black',
+            // border: '2px solid black',
           }} onClick={() => {
             setOpen(true);
             event('form-open');
           }}>
-            <Hidden smDown>ПРИНЯТЬ УЧАСТИЕ В ЛЕКЦИИ</Hidden>
+            ПРИНЯТЬ УЧАСТИЕ В ЛЕКЦИИ
           </Button>
         </Grid>
       </Grid>
