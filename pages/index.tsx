@@ -617,7 +617,7 @@ export const Programm = ({}) => {
         <Grid item xs={12} style={{ textAlign: 'center' }}>
           <Button variant="contained" size="large" style={{
             fontSize: 20,
-            padding: 5,
+            padding: 10,
             fontWeight: 'bold',
             background: 'linear-gradient(150deg, rgb(235, 226, 153) 0%, rgb(206, 188, 128) 100%)',
             borderRadius: 150,
