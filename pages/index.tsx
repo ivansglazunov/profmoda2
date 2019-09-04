@@ -62,7 +62,7 @@ export function useInterval(callback, delay) {
   }, [delay]);
 };
 
-const useStyle = makeStyles(() => ({
+const useStyle = makeStyles((theme) => ({
   container: {
     paddingLeft: 32,
     paddingRight: 32,
@@ -108,8 +108,11 @@ const useStyle = makeStyles(() => ({
     paddingBottom: 150,
     backgroundImage: `url(${data.myComment.photo})`,
     backgroundAttachment: 'fixed',
-    backgroundSize: '140%',
+    backgroundSize: '300%',
     backgroundPosition: 'right center',
+    [theme.breakpoints.up('sm')]: {
+      backgroundSize: '140%',
+    },
   },
   slickContainer: {
     '& .slick-slider': {
