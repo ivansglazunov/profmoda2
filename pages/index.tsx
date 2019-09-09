@@ -6,6 +6,8 @@ import { event } from "../imports/analitics";
 import { makeStyles, Typography, Paper, Grid, useMediaQuery, Theme, Hidden, IconButton, Menu, Button, Popover, Fab, Dialog, DialogContent, DialogContentText, DialogActions } from '@material-ui/core';
 import { yellow, red } from '@material-ui/core/colors';
 
+import { isIOS } from "react-device-detect";
+
 import Flip from 'react-reveal/Flip';
 import Fade from 'react-reveal/Fade';
 import ReactResizeDetector from 'react-resize-detector';
@@ -107,8 +109,8 @@ const useStyle = makeStyles((theme) => ({
     paddingTop: 100,
     paddingBottom: 150,
     backgroundImage: `url(${data.myComment.photo})`,
-    backgroundAttachment: 'fixed',
-    backgroundSize: '300%',
+    backgroundAttachment: isIOS ? 'inherit' : 'fixed',
+    backgroundSize: isIOS ? '150%' : '300%',
     backgroundPosition: 'right center',
     [theme.breakpoints.up('sm')]: {
       backgroundSize: '140%',
