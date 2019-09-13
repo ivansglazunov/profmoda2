@@ -109,7 +109,7 @@ const useStyle = makeStyles((theme) => ({
     paddingTop: 100,
     paddingBottom: 150,
     backgroundImage: `url(${data.myComment.photo})`,
-    backgroundAttachment: isIOS ? 'inherit' : 'fixed',
+    backgroundAttachment: 'fixed',
     backgroundSize: isIOS ? '150%' : '300%',
     backgroundPosition: 'right center',
     [theme.breakpoints.up('sm')]: {
