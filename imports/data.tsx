@@ -23,14 +23,14 @@ export default {
   publications: {
     title: 'Публикации в СМИ',
     logos: [
-      <Logo src={require('../images/logo-domashniy-ochag.png?resize&size=400')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-vogue.png?resize&size=400')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-elle.png?resize&size=400')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-the-village.png?resize&size=400')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-moscow.png?resize&size=400')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-afisha.png?resize&size=400')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-ntv.png?resize&size=400')} padding={'10%'}/>,
-      <Logo src={require('../images/logo-mos-fash-w.jpg?resize&size=400')} padding={'10%'}/>,
+      <Logo src={require('../images/logo-domashniy-ochag.png?resize&size=600')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-vogue.png?resize&size=600')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-elle.png?resize&size=600')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-the-village.png?resize&size=600')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-moscow.png?resize&size=600')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-afisha.png?resize&size=600')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-ntv.png?resize&size=600')} padding={'10%'}/>,
+      <Logo src={require('../images/logo-mos-fash-w.jpg?resize&size=600')} padding={'10%'}/>,
     ],
   },
   aboutMe: {
@@ -53,7 +53,7 @@ export default {
   },
   myComment: {
     title: 'От автора',
-    photo: require('../images/aboutMe.jpeg?resize&size=1200'),
+    photo: require('../images/aboutMe.jpeg?resize&size=1800'),
     sign: require('../images/sign.jpg?resize&size=150'),
     body: <><b>Я открыла свой первый бизнес в 19 лет</b> - школа дизайна одежды. Об этом можно прочесть во многих интервью обо мне. За 10 лет на руководящей должности, я прошла большой путь с клиентами, от создания эскизов, до производства, выходов на международные подиумы. Более 5 000 наших клиентов, обрели профессию мечты: свадебные салоны, ателье, шоу - румы, собственные марки одежды.</>,
     me: <b>Мода - это не только моя профессия,<br/>это моя жизнь.</b>,
@@ -86,10 +86,10 @@ export default {
   partners: {
     title: 'Наши партнеры',
     logos: [
-      <Logo src={require('../images/logo-mhpi.png?resize&size=400')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-moscow.png?resize&size=400')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-white.png?resize&size=400')} padding={'4%'}/>,
-      <Logo src={require('../images/logo-garderob.png?resize&size=400')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-mhpi.png?resize&size=600')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-moscow.png?resize&size=600')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-white.png?resize&size=600')} padding={'4%'}/>,
+      <Logo src={require('../images/logo-garderob.png?resize&size=600')} padding={'4%'}/>,
     ],
   },
   rules: {
