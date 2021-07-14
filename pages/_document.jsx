@@ -50,9 +50,9 @@ export default class MyDocument extends Document {
               )}`,
             }}
           />
-          <link rel="stylesheet" type="text/css" href="/static/react-infinite-calendar-styles.css"/>
-          <link rel="stylesheet" type="text/css" href="/static/slick.css" /> 
-          <link rel="stylesheet" type="text/css" href="/static/slick-theme.css" />
+          <link rel="stylesheet" type="text/css" href="static/react-infinite-calendar-styles.css"/>
+          <link rel="stylesheet" type="text/css" href="static/slick.css" /> 
+          <link rel="stylesheet" type="text/css" href="static/slick-theme.css" />
           <style
             dangerouslySetInnerHTML={{
               __html: `

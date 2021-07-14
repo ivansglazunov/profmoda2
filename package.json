@@ -3,6 +3,7 @@
   "scripts": {
     "start": "cross-env ENV=development ts-node next-server.ts",
     "build": "next build",
+    "export": "next export -o docs",
     "serve": "cross-env ENV=production ts-node next-server.ts",
     "tslint": "tslint --project tsconfig.json -c ./tslint.json",
     "migrate": "knex migrate:latest",
